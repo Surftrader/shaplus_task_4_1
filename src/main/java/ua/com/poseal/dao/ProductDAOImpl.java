@@ -5,6 +5,7 @@ import ua.com.poseal.connection.Connection;
 import ua.com.poseal.connection.MongoDBConnection;
 import ua.com.poseal.domain.Product;
 
+import javax.swing.text.Document;
 import java.util.List;
 import java.util.Properties;
 
@@ -22,7 +23,8 @@ public class ProductDAOImpl implements DAO<Product> {
     @Override
     public void insert(List<Product> products) {
         MongoDatabase database = connection.getDatabase(properties);
-
+        List<Document> documents;
+        
         System.out.println("Method insertProducts from ProductDAO");
 
     }

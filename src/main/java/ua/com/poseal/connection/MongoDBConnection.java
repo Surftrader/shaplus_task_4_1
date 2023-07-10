@@ -1,8 +1,6 @@
 package ua.com.poseal.connection;
 
 import com.mongodb.ConnectionString;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -16,6 +14,8 @@ public class MongoDBConnection implements Connection {
     public static final String URL = "url";
     public static final String DATABASE = "database";
     public static final MongoDBConnection instance = getInstance();
+
+    private MongoClient mongoClient;
 
     public static synchronized MongoDBConnection getInstance() {
         if (instance == null) {
@@ -40,7 +40,7 @@ public class MongoDBConnection implements Connection {
                     .build();
 
             // Create an instance of MongoClient using the settings
-            MongoClient mongoClient = MongoClients.create(settings);
+            mongoClient = MongoClients.create(settings);
 
             database = mongoClient.getDatabase(properties.getProperty(DATABASE));
 
@@ -48,5 +48,9 @@ public class MongoDBConnection implements Connection {
             logger.error("Error connection to database {}", properties.getProperty(DATABASE));
         }
         return database;
+    }
+    @Override
+    public void close() {
+        mongoClient.close();
     }
 }

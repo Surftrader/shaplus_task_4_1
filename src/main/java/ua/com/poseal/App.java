@@ -33,6 +33,8 @@ import static ua.com.poseal.connection.MongoDBConnection.URL;
 public class App {
     public static final Logger logger = LoggerFactory.getLogger("LOGGER");
     private static final String PRODUCTS = "products";
+
+//    private Connection connection;
     public static void main(String[] args) {
 
         try {
@@ -46,28 +48,8 @@ public class App {
     private void run() {
         // Load properties
         Properties properties = new Loader().getFileProperties();
-        Connection connection = new MongoDBConnection();
-        MongoDatabase database = connection.getDatabase(properties);
 
-        // Create a connection string with the MongoDB URI
-//        UrlBuilder urlBuilder = new UrlBuilder(properties);
-//        System.out.println(urlBuilder.getURL());
-//        ConnectionString connectionString = new ConnectionString(properties.getProperty(URL));
-//
-//        // Create MongoClientSettings with the connection string
-//        MongoClientSettings settings = MongoClientSettings.builder()
-//                .applyConnectionString(connectionString)
-//                .build();
-//
-//        // Create an instance of MongoClient using the settings
-//        MongoClient mongoClient = MongoClients.create(settings);
-//
-//        MongoDatabase database = mongoClient.getDatabase(properties.getProperty(DATABASE));
-
-//        CollectionCreator creator = new CollectionCreator(properties, database);
-//        creator.createCollections();
-
-        MongoDBExecutor executor = new MongoDBExecutor(database);
+        MongoDBExecutor executor = new MongoDBExecutor(properties);
         // create tables (collections)
         executor.createCollections();
         // insert into tables (collections)
@@ -84,15 +66,7 @@ public class App {
         // query task
 
 
-
-
-//        // Получение доступа к коллекции
-//        MongoCollection<Document> collection = database.getCollection("название_коллекции");
-//        // Создание документа
-//        Document document = new Document("ключ", "значение");
-//        // Вставка документа в коллекцию
-//        collection.insertOne(document);
-
+        executor.close();
     }
 
 

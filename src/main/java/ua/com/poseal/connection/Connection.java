@@ -6,4 +6,5 @@ import java.util.Properties;
 
 public interface Connection {
     MongoDatabase getDatabase(Properties properties);
+    void close();
 }

@@ -3,6 +3,8 @@ package ua.com.poseal.util;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import ua.com.poseal.connection.Connection;
+import ua.com.poseal.connection.MongoDBConnection;
 import ua.com.poseal.data.Data;
 import ua.com.poseal.domain.Address;
 import ua.com.poseal.domain.Category;
@@ -11,6 +13,7 @@ import ua.com.poseal.domain.Store;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Properties;
 
 public class MongoDBExecutor {
     private static final String PRODUCTS = "products";
@@ -19,12 +22,14 @@ public class MongoDBExecutor {
     private static final String ADDRESSES = "addresses";
     private static final String CITIES = "cities";
     private static final String LEFTOVER = "leftover";
+    private final Connection connection;
     private final MongoDatabase database;
     private final Data data;
     private final Mapper mapper;
 
-    public MongoDBExecutor(MongoDatabase database) {
-        this.database = database;
+    public MongoDBExecutor(Properties properties) {
+        this.connection = new MongoDBConnection();
+        this.database = connection.getDatabase(properties);
         this.data = new Data();
         this.mapper = new Mapper();
     }
@@ -84,5 +89,9 @@ public class MongoDBExecutor {
     private void insertDocument(MongoCollection<Document> collection, Object obj) {
         Document document = mapper.objectToDocument(obj);
         collection.insertOne(document);
+    }
+
+    public void close() {
+        connection.close();
     }
 }

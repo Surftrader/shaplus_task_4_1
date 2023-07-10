@@ -9,25 +9,25 @@ public class Mapper {
         Document document = new Document();
         if (obj instanceof City) {
             City city = (City) obj;
-            document.append("id", city.getId())
+            document.append("_id", city.getId())
                     .append("name", city.getName());
         } else if (obj instanceof Address) {
             Address address = (Address) obj;
-            document.append("id", address.getId())
+            document.append("_id", address.getId())
                     .append("name", address.getName())
                     .append("cityId", address.getCityId());
         } else if (obj instanceof Store) {
             Store store = (Store) obj;
-            document.append("id", store.getId())
+            document.append("_id", store.getId())
                     .append("name", store.getName())
                     .append("addressId", store.getAddressId());
         } else if (obj instanceof Category) {
             Category category = (Category) obj;
-            document.append("id", category.getId())
+            document.append("_id", category.getId())
                     .append("name", category.getName());
         } else if (obj instanceof Product) {
             Product product = (Product) obj;
-            document.append("id", product.getId())
+            document.append("_id", product.getId())
                     .append("name", product.getName())
                     .append("price", product.getPrice())
                     .append("categoryId", product.getCategoryId());
