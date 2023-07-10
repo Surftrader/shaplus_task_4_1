@@ -1,7 +1,7 @@
-let database = db.getSiblingDB('shapp_db');
+// let database = db.getSiblingDB('shapp_db');
 
-database.createCollection('Store');
-database.createCollection('City');
-database.createCollection('Category');
-database.createCollection('Address');
-database.createCollection('Product');
+db.createCollection('Store');
+db.createCollection('City');
+db.createCollection('Category');
+db.createCollection('Address');
+db.createCollection('Product');

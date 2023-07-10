@@ -8,7 +8,11 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ua.com.poseal.connection.Connection;
+import ua.com.poseal.connection.MongoDBConnection;
+import ua.com.poseal.service.LeftoverService;
 import ua.com.poseal.service.ProductService;
+import ua.com.poseal.util.CollectionCreator;
 import ua.com.poseal.util.Loader;
 import ua.com.poseal.util.MongoDBExecutor;
 import ua.com.poseal.util.UrlBuilder;
@@ -28,8 +32,7 @@ import static ua.com.poseal.connection.MongoDBConnection.URL;
 
 public class App {
     public static final Logger logger = LoggerFactory.getLogger("LOGGER");
-
-
+    private static final String PRODUCTS = "products";
     public static void main(String[] args) {
 
         try {
@@ -40,61 +43,45 @@ public class App {
         }
     }
 
-    private void run() throws IOException {
+    private void run() {
         // Load properties
         Properties properties = new Loader().getFileProperties();
-//        Connection connection = new MongoDBConnection();
-//        MongoDatabase database = connection.getDatabase(properties);
+        Connection connection = new MongoDBConnection();
+        MongoDatabase database = connection.getDatabase(properties);
 
         // Create a connection string with the MongoDB URI
 //        UrlBuilder urlBuilder = new UrlBuilder(properties);
 //        System.out.println(urlBuilder.getURL());
-        ConnectionString connectionString = new ConnectionString(properties.getProperty(URL));
+//        ConnectionString connectionString = new ConnectionString(properties.getProperty(URL));
+//
+//        // Create MongoClientSettings with the connection string
+//        MongoClientSettings settings = MongoClientSettings.builder()
+//                .applyConnectionString(connectionString)
+//                .build();
+//
+//        // Create an instance of MongoClient using the settings
+//        MongoClient mongoClient = MongoClients.create(settings);
+//
+//        MongoDatabase database = mongoClient.getDatabase(properties.getProperty(DATABASE));
 
-
-        // Create MongoClientSettings with the connection string
-        MongoClientSettings settings = MongoClientSettings.builder()
-                .applyConnectionString(connectionString)
-                .build();
-
-        // Create an instance of MongoClient using the settings
-        MongoClient mongoClient = MongoClients.create(settings);
-
-        MongoDatabase database = mongoClient.getDatabase(properties.getProperty(DATABASE));
-
-// Чтение файла со скриптом
-        String scriptFilePath = "/db/createCollections.js";
-
-        // Build the command to execute the script using the `mongo` shell
-        String[] command = {"mongosh", "--quiet", scriptFilePath};
-
-        // Execute the script command
-        Process process = Runtime.getRuntime().exec(command);
-
-        // Read the output of the script execution
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            System.out.println(line);
-        }
-
-        // Wait for the script execution to complete
-        try {
-            int exitCode = process.waitFor();
-            System.out.println("Script execution completed with exit code: " + exitCode);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
+//        CollectionCreator creator = new CollectionCreator(properties, database);
+//        creator.createCollections();
 
         MongoDBExecutor executor = new MongoDBExecutor(database);
-//        executor.createCollections();
+        // create tables (collections)
+        executor.createCollections();
+        // insert into tables (collections)
         executor.insertDataToCollections();
 
         // Generate products and insert them into a table
         ProductService productService = new ProductService(properties);
+        productService.saveProducts(Long.parseLong(properties.getProperty(PRODUCTS)));
 
+        // Fill leftover table
+        LeftoverService leftoverService = new LeftoverService(properties);
+        leftoverService.saveLeftover();
+
+        // query task
 
 
 

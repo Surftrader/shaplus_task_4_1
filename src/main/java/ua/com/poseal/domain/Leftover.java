@@ -7,6 +7,14 @@ public class Leftover {
     private Long productId;
     private Long amountId;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getStoreId() {
         return storeId;
     }

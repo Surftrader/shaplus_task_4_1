@@ -31,6 +31,7 @@ public class ProductGenerator {
     }
 
     public Product generateProduct(int categories) {
+//        System.out.println(categories + " from generateProduct()");
         return new Product(
                 generateName(),
                 generatePrice(),
