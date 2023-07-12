@@ -7,6 +7,10 @@ public class Category {
     public Category() {
     }
 
+    public Category(Long id) {
+        this.id = id;
+    }
+
     public Category(Long id, String name) {
         this.id = id;
         this.name = name;
@@ -41,5 +45,10 @@ public class Category {
     @Override
     public int hashCode() {
         return id.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

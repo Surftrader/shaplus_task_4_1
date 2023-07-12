@@ -4,43 +4,51 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import org.apache.commons.lang3.time.StopWatch;
+import ua.com.poseal.data.Data;
+import ua.com.poseal.domain.Category;
+import ua.com.poseal.domain.Leftover;
 import ua.com.poseal.domain.Product;
+import ua.com.poseal.domain.Store;
+import ua.com.poseal.dto.LeftoverDTO;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import static ua.com.poseal.App.logger;
 
-public class ProductGenerator {
+public class Generator {
 
     private static final double MIN_PRICE = 10;
     private static final double MAX_PRICE = 10000;
     private static final int MIN_LENGTH = 3;
     private static final int MAX_LENGTH = 10;
     private static final int LETTERS_IN_ALPHABET = 26;
+    private static final int MIN_AMOUNT = 1;
+    private static final int MAX_AMOUNT = 10;
     private final Random random;
     private final Validator validator;
+    private final Data data;
 
-    public ProductGenerator() {
+    private long count = 1;
+
+    public Generator() {
         this.random = new Random();
         this.validator = Validation.buildDefaultValidatorFactory().getValidator();
+        this.data = new Data();
     }
 
     public Product generateProduct(int categories) {
-//        System.out.println(categories + " from generateProduct()");
         return new Product(
                 generateName(),
                 generatePrice(),
-                generateId(categories));
+                generateCategory(categories));
     }
 
-    protected Long generateId(int categories) {
+    private Category generateCategory(int categories) {
         int nextInt = random.nextInt(categories);
-        return (long) nextInt + 1;
+        Map<Integer, Category> map = data.getCategories();
+        return map.get(nextInt + 1);
     }
 
     private BigDecimal generatePrice() {
@@ -70,6 +78,7 @@ public class ProductGenerator {
             Product product = generateProduct(categories);
             Set<ConstraintViolation<Product>> validate = validator.validate(product);
             if (validate.isEmpty()) {
+                product.setId(count++);
                 products.add(product);
                 validProductCount++;
             } else {
@@ -84,5 +93,58 @@ public class ProductGenerator {
         logger.debug("Exited generateProducts() method");
 
         return products;
+    }
+
+//    public List<Leftover> generateLeftover(List<Store> storeList, List<Product> productList) {
+//        List<Leftover> leftoverList = new LinkedList<>();
+//        long counter = 1;
+//        for (Store store:storeList) {
+//            for (Product product:productList) {
+//                leftoverList.add(new Leftover(
+//                        counter++,
+//                        store,
+//                        product,
+//                        generateAmount())
+//                );
+//            }
+//        }
+//        return leftoverList;
+//    }
+
+    public List<LeftoverDTO> generateLeftoverDTO(List<Store> storeList, List<Product> productList) {
+        List<LeftoverDTO> leftoverList = new LinkedList<>();
+        long counter = 1;
+        for (Store store : storeList) {
+//            for (Product product : productList) {
+//                leftoverList.add(new LeftoverDTO(
+//                        counter++,
+//                        store.getName(),
+//                        store.getAddress().toString(),
+//                        product.getCategory().toString(),
+//                        product.getName(),
+//                        generateAmount())
+//                );
+//            }
+
+            int i = random.nextInt(productList.size() - 1);
+            int range = (int) Math.ceil((double) productList.size() / i);
+
+            for (int j = 0; j < productList.size(); j += range) {
+                Product product = productList.get(j);
+                leftoverList.add(new LeftoverDTO(
+                        counter++,
+                        store.getName(),
+                        store.getAddress().toString(),
+                        product.getCategory().toString(),
+                        product.getName(),
+                        generateAmount())
+                );
+            }
+        }
+        return leftoverList;
+    }
+
+    private int generateAmount() {
+        return random.nextInt(MAX_AMOUNT - MIN_AMOUNT) + MIN_AMOUNT;
     }
 }

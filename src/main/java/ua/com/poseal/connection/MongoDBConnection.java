@@ -29,19 +29,11 @@ public class MongoDBConnection implements Connection {
         // Creating a MongoDB Client
         MongoDatabase database = null;
         try {
-//            MongoClient mongoClient = MongoClients.create(properties.getProperty(URL));
-//            // Getting access to the database
-//            database = mongoClient.getDatabase(properties.getProperty(DATABASE));
             ConnectionString connectionString = new ConnectionString(properties.getProperty(URL));
-
-            // Create MongoClientSettings with the connection string
             MongoClientSettings settings = MongoClientSettings.builder()
                     .applyConnectionString(connectionString)
                     .build();
-
-            // Create an instance of MongoClient using the settings
             mongoClient = MongoClients.create(settings);
-
             database = mongoClient.getDatabase(properties.getProperty(DATABASE));
 
         } catch (Exception e) {
@@ -49,6 +41,7 @@ public class MongoDBConnection implements Connection {
         }
         return database;
     }
+
     @Override
     public void close() {
         mongoClient.close();

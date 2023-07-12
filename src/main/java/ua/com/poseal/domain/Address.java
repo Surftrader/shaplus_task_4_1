@@ -3,12 +3,12 @@ package ua.com.poseal.domain;
 public class Address {
     private Long id;
     private String name;
-    private Long cityId;
+    private City city;
 
-    public Address(Long id, String name, Long cityId) {
+    public Address(Long id, String name, City city) {
         this.id = id;
         this.name = name;
-        this.cityId = cityId;
+        this.city = city;
     }
 
     public Long getId() {
@@ -27,12 +27,12 @@ public class Address {
         this.name = name;
     }
 
-    public Long getCityId() {
-        return cityId;
+    public City getCity() {
+        return city;
     }
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setCity(City city) {
+        this.city = city;
     }
 
     @Override
@@ -48,5 +48,10 @@ public class Address {
     @Override
     public int hashCode() {
         return id.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return name + ", " + city;
     }
 }

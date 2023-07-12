@@ -3,12 +3,12 @@ package ua.com.poseal.domain;
 public class Store {
     private Long id;
     private String name;
-    private Long addressId;
+    private Address address;
 
-    public Store(Long id, String name, Long addressId) {
+    public Store(Long id, String name, Address address) {
         this.id = id;
         this.name = name;
-        this.addressId = addressId;
+        this.address = address;
     }
 
     public Long getId() {
@@ -27,26 +27,29 @@ public class Store {
         this.name = name;
     }
 
-    public Long getAddressId() {
-        return addressId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(Long addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Store store = (Store) o;
-
         return id.equals(store.id);
     }
 
     @Override
     public int hashCode() {
         return id.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return name + ", " + address;
     }
 }

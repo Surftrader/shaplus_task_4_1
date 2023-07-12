@@ -11,17 +11,15 @@ import java.util.Properties;
 import static ua.com.poseal.App.logger;
 
 public class RowCounter {
-    private final Properties properties;
-    private final Connection connection;
+    private final MongoDatabase database;
 
     public RowCounter(Properties properties) {
-        this.properties = properties;
-        this.connection = new MongoDBConnection();
+        Connection connection = new MongoDBConnection();
+        this.database = connection.getDatabase(properties);
     }
 
     public Long countRows(String collection) {
         logger.debug("Entered countRows() method with parameter table={}", collection);
-        MongoDatabase database = connection.getDatabase(properties);
 
         MongoCollection<Document> collections = database.getCollection(collection);
         Long result = collections.countDocuments();

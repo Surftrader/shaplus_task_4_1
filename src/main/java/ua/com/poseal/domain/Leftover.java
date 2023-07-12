@@ -3,9 +3,16 @@ package ua.com.poseal.domain;
 public class Leftover {
 
     private Long id;
-    private Long storeId;
-    private Long productId;
-    private Long amountId;
+    private Store store;
+    private Product product;
+    private int amount;
+
+    public Leftover(Long id, Store store, Product product, int amount) {
+        this.id = id;
+        this.store = store;
+        this.product = product;
+        this.amount = amount;
+    }
 
     public Long getId() {
         return id;
@@ -15,28 +22,28 @@ public class Leftover {
         this.id = id;
     }
 
-    public Long getStoreId() {
-        return storeId;
+    public Store getStore() {
+        return store;
     }
 
-    public void setStoreId(Long storeId) {
-        this.storeId = storeId;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public Long getAmountId() {
-        return amountId;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setAmountId(Long amountId) {
-        this.amountId = amountId;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     @Override
@@ -52,5 +59,15 @@ public class Leftover {
     @Override
     public int hashCode() {
         return id.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Leftover{" +
+                "id=" + id +
+                ", store=" + store +
+                ", product=" + product +
+                ", amount=" + amount +
+                '}';
     }
 }
