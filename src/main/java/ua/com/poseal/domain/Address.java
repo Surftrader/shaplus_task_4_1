@@ -1,9 +1,9 @@
 package ua.com.poseal.domain;
 
 public class Address {
-    private Long id;
-    private String name;
-    private City city;
+    private final Long id;
+    private final String name;
+    private final City city;
 
     public Address(Long id, String name, City city) {
         this.id = id;
@@ -15,33 +15,19 @@ public class Address {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public City getCity() {
         return city;
     }
 
-    public void setCity(City city) {
-        this.city = city;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Address address = (Address) o;
-
         return id.equals(address.id);
     }
 

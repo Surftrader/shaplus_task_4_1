@@ -1,13 +1,12 @@
 package ua.com.poseal.dto;
 
 public class LeftoverDTO {
-
     private Long id;
     private String store;
-    private String address; // + city
+    private final String address;
     private String category;
     private String product;
-    private int amount;
+    private final int amount;
 
     public LeftoverDTO(Long id, String store, String address, String category, String product, int amount) {
         this.id = id;
@@ -18,12 +17,13 @@ public class LeftoverDTO {
         this.amount = amount;
     }
 
-    public Long getId() {
-        return id;
+    public LeftoverDTO(String address, int totalAmount) {
+        this.address = address;
+        this.amount = totalAmount;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public String getStore() {
@@ -38,10 +38,6 @@ public class LeftoverDTO {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getCategory() {
         return category;
     }
@@ -54,15 +50,7 @@ public class LeftoverDTO {
         return product;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
-    }
-
     public int getAmount() {
         return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 }

@@ -2,6 +2,7 @@ package ua.com.poseal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ua.com.poseal.dto.LeftoverDTO;
 import ua.com.poseal.service.LeftoverService;
 import ua.com.poseal.service.ProductService;
 import ua.com.poseal.util.Loader;
@@ -16,26 +17,26 @@ public class App {
     private static final String PRODUCTS = "products";
 
     public static void main(String[] args) {
-
+        logger.debug("Start program");
         try {
             App app = new App();
             app.run();
         } catch (Exception e) {
             logger.error("Error running program", e);
         }
+        logger.debug("Stop program");
     }
 
     private void run() {
+        logger.debug("Entered run() method");
         // Load properties
         Properties properties = new Loader().getFileProperties();
 
         MongoDBExecutor executor = new MongoDBExecutor(properties);
-        // create tables (collections)
         executor.createCollections();
-        // insert into tables (collections)
         executor.insertDataToCollections();
 
-        // Generate products and insert them into a table
+        // Generate products and insert them in the collection
         ProductService productService = new ProductService(properties);
         productService.saveProducts(Long.parseLong(properties.getProperty(PRODUCTS)));
 
@@ -44,8 +45,12 @@ public class App {
         leftoverService.saveLeftover();
 
         // query task
-        logger.info("{}", leftoverService.findAddressByCategory(properties.getProperty(CATEGORY)));
+        LeftoverDTO dto = leftoverService.findAddressByCategory(properties.getProperty(CATEGORY));
+        logger.info("The address of the store with the most products: {}, count = {}",
+                dto.getAddress(), dto.getAmount());
 
         executor.close();
+
+        logger.debug("Exited run() method");
     }
 }

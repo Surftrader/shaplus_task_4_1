@@ -1,9 +1,9 @@
 package ua.com.poseal.domain;
 
 public class Store {
-    private Long id;
-    private String name;
-    private Address address;
+    private final Long id;
+    private final String name;
+    private final Address address;
 
     public Store(Long id, String name, Address address) {
         this.id = id;
@@ -15,24 +15,12 @@ public class Store {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Address getAddress() {
         return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 
     @Override

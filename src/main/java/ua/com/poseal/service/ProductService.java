@@ -18,7 +18,7 @@ public class ProductService {
     public ProductService(Properties properties) {
         this.properties = properties;
         this.productDAO = new ProductDAO(properties);
-        this.generator = new Generator();
+        this.generator = new Generator(properties);
     }
 
     public void saveProducts(long numbers) {

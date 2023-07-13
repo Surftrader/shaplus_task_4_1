@@ -2,10 +2,10 @@ package ua.com.poseal.domain;
 
 public class Leftover {
 
-    private Long id;
+    private final Long id;
     private Store store;
-    private Product product;
-    private int amount;
+    private final Product product;
+    private final int amount;
 
     public Leftover(Long id, Store store, Product product, int amount) {
         this.id = id;
@@ -16,10 +16,6 @@ public class Leftover {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Store getStore() {
@@ -34,25 +30,15 @@ public class Leftover {
         return product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     public int getAmount() {
         return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Leftover leftover = (Leftover) o;
-
         return id.equals(leftover.id);
     }
 

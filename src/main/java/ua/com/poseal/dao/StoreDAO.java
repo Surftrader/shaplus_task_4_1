@@ -18,12 +18,11 @@ import static ua.com.poseal.App.logger;
 
 public class StoreDAO implements DAO<Store> {
     private static final String COLLECTION = "stores";
-    private final Connection connection;
     private final MongoDatabase database;
     private final Mapper mapper;
 
     public StoreDAO(Properties properties) {
-        this.connection = new MongoDBConnection();
+        Connection connection = new MongoDBConnection();
         this.database = connection.getDatabase(properties);
         this.mapper = new Mapper();
     }
@@ -47,7 +46,7 @@ public class StoreDAO implements DAO<Store> {
         stopWatch.stop();
 
         List<Store> result = new LinkedList<>();
-        for (Document doc:documents) {
+        for (Document doc : documents) {
             result.add(mapper.documentToStore(doc));
         }
         logger.info("{} stores were found in collections {}", result.size(), COLLECTION);
@@ -56,8 +55,8 @@ public class StoreDAO implements DAO<Store> {
 
         return result;
     }
+
     private void insertDocument(MongoCollection<Document> collection, Store store) {
-        Document document = mapper.objectToDocument(store);
-        collection.insertOne(document);
+        collection.insertOne(mapper.objectToDocument(store));
     }
 }

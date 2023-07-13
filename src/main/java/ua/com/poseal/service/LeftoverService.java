@@ -14,11 +14,12 @@ public class LeftoverService {
     private final StoreService storeService;
     private final ProductService productService;
     private final Generator generator;
+
     public LeftoverService(Properties properties) {
         this.leftoverDAO = new LeftoverDAO(properties);
         this.storeService = new StoreService(properties);
         this.productService = new ProductService(properties);
-        this.generator = new Generator();
+        this.generator = new Generator(properties);
     }
 
     public void saveLeftover() {
@@ -26,8 +27,7 @@ public class LeftoverService {
         List<Store> storeList = storeService.getAll();
         // find products
         List<Product> productList = productService.getAll();
-//        leftoverDAO.insert(generator.generateLeftover(storeList, productList));
-        leftoverDAO.insertDTO(generator.generateLeftoverDTO(storeList, productList));
+        leftoverDAO.insertLeftoverDTO(generator.generateLeftoverDTO(storeList, productList));
     }
 
     public LeftoverDTO findAddressByCategory(String category) {

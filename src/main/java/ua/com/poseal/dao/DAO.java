@@ -4,5 +4,6 @@ import java.util.List;
 
 public interface DAO<T> {
     void insert(List<T> items);
+
     List<T> getAll();
 }
