@@ -42,7 +42,6 @@
                                     <mainClass>ua.com.poseal.App</mainClass>
                                     <addClasspath>true</addClasspath>
                                     <classpathPrefix>config/</classpathPrefix>
-                                    <classpathPrefix>db/</classpathPrefix>
                                 </manifest>
                             </archive>
                         </configuration>
