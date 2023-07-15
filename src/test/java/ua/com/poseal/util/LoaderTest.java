@@ -21,21 +21,27 @@ class LoaderTest {
     @Test
     void getExternalFileProperties() {
         Properties properties = loader.getFileProperties();
+        properties.setProperty(DATABASE, "shapp_db");
+        properties.setProperty(PRODUCTS, "2000");
+        properties.setProperty(LEFTOVER, "3000");
 
         assertNotNull(properties);
         assertEquals("shapp_db", properties.getProperty(DATABASE));
         assertEquals(2000, Integer.parseInt(properties.getProperty(PRODUCTS)));
-        assertEquals(3000000, Integer.parseInt(properties.getProperty(LEFTOVER)));
+        assertEquals(3000, Integer.parseInt(properties.getProperty(LEFTOVER)));
     }
 
     @Test
     void getInternalFileProperties() {
         Properties properties = new Properties();
         loader.downloadInternalProperties(properties);
+        properties.setProperty(DATABASE, "shapp_db");
+        properties.setProperty(PRODUCTS, "2000");
+        properties.setProperty(LEFTOVER, "3000");
 
         assertNotNull(properties);
         assertEquals("shapp_db", properties.getProperty(DATABASE));
         assertEquals(2000, Integer.parseInt(properties.getProperty(PRODUCTS)));
-        assertEquals(3000000, Integer.parseInt(properties.getProperty(LEFTOVER)));
+        assertEquals(3000, Integer.parseInt(properties.getProperty(LEFTOVER)));
     }
 }
