@@ -19,13 +19,13 @@ public class MongoDBExecutor {
     private final Connection connection;
     private final MongoDatabase database;
     private final StoreService storeService;
-    private final CategoryService categotyService;
+    private final CategoryService categoryService;
 
     public MongoDBExecutor(Properties properties) {
         this.connection = new MongoDBConnection();
-        this.database = connection.getDatabase(properties);
+        this.database = MongoDBConnection.getInstance().getDatabase(properties);
         this.storeService = new StoreService(properties);
-        this.categotyService = new CategoryService(properties);
+        this.categoryService = new CategoryService(properties);
     }
 
     public void createCollections() {
@@ -48,10 +48,12 @@ public class MongoDBExecutor {
 
     public void insertDataToCollections() {
         storeService.saveCollection();
-        categotyService.saveCollection();
+        categoryService.saveCollection();
     }
 
     public void close() {
-        connection.close();
+        if (connection != null) {
+            connection.close();
+        }
     }
 }

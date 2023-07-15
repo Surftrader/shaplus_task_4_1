@@ -1,39 +1,44 @@
 package ua.com.poseal.service;
 
+import org.bson.Document;
 import ua.com.poseal.dao.DAO;
 import ua.com.poseal.dao.StoreDAO;
 import ua.com.poseal.data.Data;
 import ua.com.poseal.domain.Store;
+import ua.com.poseal.util.Mapper;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class StoreService {
-    private final DAO<Store> storeDAO;
+    private final DAO<Document> storeDAO;
     private final Data data;
+    private final Mapper mapper;
 
     public StoreService(Properties properties) {
         this.storeDAO = new StoreDAO(properties);
         this.data = new Data();
+        this.mapper = new Mapper();
     }
 
     public List<Store> getAll() {
-        return storeDAO.getAll();
+        List<Document> all = storeDAO.getAll();
+        return all.stream()
+                .map(mapper::documentToStore)
+                .collect(Collectors.toList());
+
     }
 
     public void saveCollection() {
         List<Store> stores = fillCollection();
-        storeDAO.insert(stores);
+        List<Document> collect = stores.stream()
+                .map(mapper::objectToDocument)
+                .collect(Collectors.toList());
+        storeDAO.insert(collect);
     }
 
     private List<Store> fillCollection() {
-        List<Store> stores = new LinkedList<>();
         Map<Integer, Store> map = data.getStores();
-        for (Map.Entry<Integer, Store> entry : map.entrySet()) {
-            stores.add(entry.getValue());
-        }
-        return stores;
+        return new ArrayList<>(map.values());
     }
 }

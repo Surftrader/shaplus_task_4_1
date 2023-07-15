@@ -5,43 +5,34 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import ua.com.poseal.connection.Connection;
 import ua.com.poseal.connection.MongoDBConnection;
-import ua.com.poseal.domain.Category;
-import ua.com.poseal.util.Mapper;
 
 import java.util.List;
 import java.util.Properties;
 
 import static ua.com.poseal.App.logger;
 
-public class CategoryDAO implements DAO<Category> {
+public class CategoryDAO implements DAO<Document> {
     private static final String COLLECTION = "categories";
     private final MongoDatabase database;
-
-    private final Mapper mapper;
 
     public CategoryDAO(Properties properties) {
         Connection connection = new MongoDBConnection();
         this.database = connection.getDatabase(properties);
-        this.mapper = new Mapper();
     }
 
     @Override
-    public void insert(List<Category> categories) {
+    public void insert(List<Document> categories) {
         logger.debug("Entered insert() method with category list size {}", categories.size());
 
         MongoCollection<Document> collection = database.getCollection(COLLECTION);
-        categories.forEach(s -> insertDocument(collection, s));
+        collection.insertMany(categories);
 
         logger.debug("Exited insert() method");
     }
 
     @Override
-    public List<Category> getAll() {
+    public List<Document> getAll() {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
-    private void insertDocument(MongoCollection<Document> collection, Category category) {
-        Document document = mapper.objectToDocument(category);
-        collection.insertOne(document);
-    }
 }

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 public class Product {
     private Long id;
     @Length(min = 4, max = 9, message = "Product name must contain 4 to 9 letters")
-    private final String name;
+    private String name;
     private final BigDecimal price;
     private final Category category;
 
@@ -34,6 +34,10 @@ public class Product {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public BigDecimal getPrice() {

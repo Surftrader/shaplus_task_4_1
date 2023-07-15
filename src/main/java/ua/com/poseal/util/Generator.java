@@ -17,11 +17,11 @@ import java.util.*;
 import static ua.com.poseal.App.logger;
 
 public class Generator {
-    private static final String LEFTOVER = "leftover";
-    private static final double MIN_PRICE = 10;
-    private static final double MAX_PRICE = 10000;
-    private static final int MIN_LENGTH = 3;
-    private static final int MAX_LENGTH = 10;
+    protected static final String LEFTOVER = "leftover";
+    protected static final double MIN_PRICE = 10;
+    protected static final double MAX_PRICE = 10000;
+    protected static final int MIN_LENGTH = 3;
+    protected static final int MAX_LENGTH = 10;
     private static final int LETTERS_IN_ALPHABET = 26;
     private static final int MIN_AMOUNT = 1;
     private static final int MAX_AMOUNT = 10;

@@ -7,9 +7,7 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.bson.Document;
 import ua.com.poseal.connection.Connection;
 import ua.com.poseal.connection.MongoDBConnection;
-import ua.com.poseal.domain.Leftover;
 import ua.com.poseal.dto.LeftoverDTO;
-import ua.com.poseal.util.Mapper;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,36 +16,33 @@ import java.util.concurrent.TimeUnit;
 
 import static ua.com.poseal.App.logger;
 
-public class LeftoverDAO implements DAO<Leftover> {
+public class LeftoverDAO implements DAO<Document> {
 
     private static final String LEFTOVER = "leftover";
     private static final int BATCH_SIZE = 1000;
     private final Properties properties;
     private final Connection connection;
-    private final Mapper mapper;
 
     private final MongoCollection<Document> mongoCollection;
 
     public LeftoverDAO(Properties properties) {
         this.properties = properties;
         this.connection = new MongoDBConnection();
-        this.mapper = new Mapper();
         this.mongoCollection = getDocumentMongoCollection();
     }
 
     @Override
-    public void insert(List<Leftover> leftoverList) {
+    public void insert(List<Document> leftoverList) {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
     @Override
-    public List<Leftover> getAll() {
+    public List<Document> getAll() {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
-    public void insertLeftoverDTO(List<LeftoverDTO> dtos) {
-        logger.debug("Entered insertDocument() method with leftoverDTO list = {} num", dtos.size());
-        List<Document> documents = mapper.toDocuments(dtos);
+    public void insertLeftover(List<Document> documents) {
+        logger.debug("Entered insertDocument() method with Document list = {} num", documents.size());
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
@@ -63,7 +58,8 @@ public class LeftoverDAO implements DAO<Leftover> {
 
         stopWatch.stop();
         long countDocuments = mongoCollection.countDocuments();
-        logger.info("{} rows were inserted into collections {}", countDocuments, LEFTOVER);
+        logger.info("{} rows were inserted into collections \"{}\" per {} ms",
+                countDocuments, LEFTOVER, stopWatch.getTime(TimeUnit.MILLISECONDS));
         logger.info("RPS = {}", 1000.0 * countDocuments / stopWatch.getTime());
         logger.debug("Exited insertDocument() method");
 
@@ -77,7 +73,7 @@ public class LeftoverDAO implements DAO<Leftover> {
         LeftoverDTO leftoverDTO = initLeftoverDTO(doQuery(category));
 
         stopWatch.stop();
-        logger.info("Time finding the address = {} mc", stopWatch.getTime(TimeUnit.MILLISECONDS));
+        logger.info("Time finding the address = {} ms", stopWatch.getTime(TimeUnit.MILLISECONDS));
         logger.debug("Exited findAddressByCategory() method");
 
         return leftoverDTO;

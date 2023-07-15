@@ -46,8 +46,8 @@ public class App {
 
         // query task
         LeftoverDTO dto = leftoverService.findAddressByCategory(properties.getProperty(CATEGORY));
-        logger.info("The address of the store with the most products: {}, count = {}",
-                dto.getAddress(), dto.getAmount());
+        logger.info("The address of the store with the largest number of products in the category \"{}\": {}, count = {}",
+                properties.getProperty(CATEGORY), dto.getAddress(), dto.getAmount());
 
         executor.close();
 
