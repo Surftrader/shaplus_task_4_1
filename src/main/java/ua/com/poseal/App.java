@@ -35,18 +35,14 @@ public class App {
         MongoDBExecutor executor = new MongoDBExecutor(properties);
         executor.createCollections();
         executor.insertDataToCollections();
-
         // Generate products and insert them in the collection
-        ProductService productService = new ProductService(properties);
-        productService.saveProducts(Long.parseLong(properties.getProperty(PRODUCTS)));
-
+        executor.saveProducts(Long.parseLong(properties.getProperty(PRODUCTS)));
         // Fill leftover collection
-        LeftoverService leftoverService = new LeftoverService(properties);
-        leftoverService.saveLeftover();
-
+        executor.saveLeftover();
         // query task
-        LeftoverDTO dto = leftoverService.findAddressByCategory(properties.getProperty(CATEGORY));
-        logger.info("The address of the store with the largest number of products in the category \"{}\": {}, count = {}",
+        LeftoverDTO dto = executor.findAddressByCategory(properties.getProperty(CATEGORY));
+        logger.info(
+                "The address of the store with the largest number of products in the category \"{}\": {}, count = {}",
                 properties.getProperty(CATEGORY), dto.getAddress(), dto.getAmount());
 
         executor.close();

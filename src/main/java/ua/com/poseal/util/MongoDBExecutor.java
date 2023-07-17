@@ -5,7 +5,10 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import ua.com.poseal.connection.Connection;
 import ua.com.poseal.connection.MongoDBConnection;
+import ua.com.poseal.dto.LeftoverDTO;
 import ua.com.poseal.service.CategoryService;
+import ua.com.poseal.service.LeftoverService;
+import ua.com.poseal.service.ProductService;
 import ua.com.poseal.service.StoreService;
 
 import java.util.ArrayList;
@@ -21,11 +24,17 @@ public class MongoDBExecutor {
     private final StoreService storeService;
     private final CategoryService categoryService;
 
+    private final ProductService productService;
+    private final LeftoverService leftoverService;
+
+
     public MongoDBExecutor(Properties properties) {
         this.connection = new MongoDBConnection();
         this.database = MongoDBConnection.getInstance().getDatabase(properties);
         this.storeService = new StoreService(properties);
         this.categoryService = new CategoryService(properties);
+        this.productService = new ProductService(properties);
+        this.leftoverService = new LeftoverService(properties);
     }
 
     public void createCollections() {
@@ -55,5 +64,17 @@ public class MongoDBExecutor {
         if (connection != null) {
             connection.close();
         }
+    }
+
+    public void saveProducts(long products) {
+        productService.saveProducts(products);
+    }
+
+    public void saveLeftover() {
+        leftoverService.saveLeftover();
+    }
+
+    public LeftoverDTO findAddressByCategory(String category) {
+        return leftoverService.findAddressByCategory(category);
     }
 }

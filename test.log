@@ -1,0 +1,23 @@
+3419 [main] INFO  LOGGER - File was created by path=config/application.properties
+3445 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+3446 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+3490 [main] INFO  LOGGER - File was created by path=config/application.properties
+3491 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+3491 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+5131 [main] INFO  LOGGER - File was created by path=config/application.properties
+5133 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+5138 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+5495 [main] INFO  LOGGER - 15 products were generated per 0.3 s
+5496 [main] INFO  LOGGER - 10 valid products. 5 invalid products.
+5506 [main] INFO  LOGGER - 2 leftovers were generated per 0.009 s
+5511 [main] INFO  LOGGER - File was created by path=config/application.properties
+5517 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+5518 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+5563 [main] INFO  LOGGER - 6 products were generated per 0.013 s
+5563 [main] INFO  LOGGER - 5 valid products. 1 invalid products.
+5574 [main] INFO  LOGGER - File was created by path=config/application.properties
+5577 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+5580 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+5585 [main] INFO  LOGGER - File was created by path=config/application.properties
+5586 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+5586 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
