@@ -39,10 +39,10 @@ public class MongoDBConnection implements Connection {
 
             String connectionString = String.format(
                     template, username, password, clusterEndpoint, database, readPreference);
-//            String truststore = properties.getProperty("javax.net.ssl.trustStore");
-//            String truststorePassword = properties.getProperty("javax.net.ssl.trustStorePassword");
-//            System.setProperty("javax.net.ssl.trustStore", truststore);
-//            System.setProperty("javax.net.ssl.trustStorePassword", truststorePassword);
+            String truststore = properties.getProperty("javax.net.ssl.trustStore");
+            String truststorePassword = properties.getProperty("javax.net.ssl.trustStorePassword");
+            System.setProperty("javax.net.ssl.trustStore", truststore);
+            System.setProperty("javax.net.ssl.trustStorePassword", truststorePassword);
 
             mongoClient = MongoClients.create(connectionString);
             mongoDatabase = mongoClient.getDatabase(properties.getProperty(DATABASE));
