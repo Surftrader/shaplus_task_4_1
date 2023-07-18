@@ -34,11 +34,13 @@ public class MongoDBConnection implements Connection {
         try {
 //            ConnectionString connectionString = new ConnectionString(properties.getProperty(URL));
 
-            String template = "mongodb://%s:%s@%s/shapp_db?ssl=true&replicaSet=rs0&readpreference=%s";
+            //:27017/?ssl=true&ssl_ca_certs=/config/global-bundle.pem&retryWrites=false
+
+            String template = "mongodb://%s:%s@%s/shapp_db?%s";
             String username = properties.getProperty(USERNAME);
             String password = properties.getProperty(PASSWORD);
             String clusterEndpoint = "docdb-2023-07-17-17-11-32.cqqiakrcxslc.eu-west-3.docdb.amazonaws.com:27017";
-            String readPreference = "secondaryPreferred";
+            String readPreference = "ssl=true&ssl_ca_certs=/config/global-bundle.pem&retryWrites=false";
             String connectionString = String.format(template, username, password, clusterEndpoint, readPreference);
 
             String truststore = properties.getProperty("javax.net.ssl.trustStore");
