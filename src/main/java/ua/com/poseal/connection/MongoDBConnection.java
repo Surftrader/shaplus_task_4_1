@@ -35,18 +35,20 @@ public class MongoDBConnection implements Connection {
             String password = properties.getProperty(PASSWORD);
             String clusterEndpoint = properties.getProperty(URL);
             String database = properties.getProperty(DATABASE);
-            String readPreference = "ssl=true&ssl_ca_certs=/var/lib/jenkins/workspace/mall/config/global-bundle.pem&" +
-                    "retryWrites=false&" +
-                    "javax.net.ssl.trustStore=/home/ec2-user/rds-truststore.jks&" +
-                    "javax.net.ssl.trustStorePassword=storepassword";
+//            String readPreference =
+//                    "ssl=true&replicaSet=rs0&" +
+//                    "retryWrites=false&" +
+//                    "javax.net.ssl.trustStore=/home/ec2-user/rds-truststore.jks&" +
+//                    "javax.net.ssl.trustStorePassword=storepassword";
+            String readPreference = "ssl=true&replicaSet=rs0&readpreference=secondaryPreferred";
 
             String connectionString = String.format(
                     template, username, password, clusterEndpoint, database, readPreference);
 //            String readPreference = "ssl=true&ssl_ca_certs=/config/global-bundle.pem&retryWrites=false&javax.net.ssl.trustStore=/home/ec2-user/rds-truststore.jks&javax.net.ssl.trustStorePassword=storepassword";
-//            String truststore = properties.getProperty("javax.net.ssl.trustStore");
-//            String truststorePassword = properties.getProperty("javax.net.ssl.trustStorePassword");
-//            System.setProperty("javax.net.ssl.trustStore", truststore);
-//            System.setProperty("javax.net.ssl.trustStorePassword", truststorePassword);
+            String truststore = properties.getProperty("javax.net.ssl.trustStore");
+            String truststorePassword = properties.getProperty("javax.net.ssl.trustStorePassword");
+            System.setProperty("javax.net.ssl.trustStore", truststore);
+            System.setProperty("javax.net.ssl.trustStorePassword", truststorePassword);
 //            MongoClientSettings settings = MongoClientSettings.builder()
 //                    .applyConnectionString(connectionString)
 //                    .build();
