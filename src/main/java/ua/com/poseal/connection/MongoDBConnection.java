@@ -40,14 +40,14 @@ public class MongoDBConnection implements Connection {
             String username = properties.getProperty(USERNAME);
             String password = properties.getProperty(PASSWORD);
             String clusterEndpoint = "docdb-2023-07-17-17-11-32.cqqiakrcxslc.eu-west-3.docdb.amazonaws.com:27017";
-            String readPreference = "ssl=true&ssl_ca_certs=/config/global-bundle.pem&retryWrites=false";
+            String readPreference = "ssl=true&ssl_ca_certs=/config/global-bundle.pem&retryWrites=false&javax.net.ssl.trustStore=/home/ec2-user/rds-truststore.jks&javax.net.ssl.trustStorePassword=storepassword";
             String connectionString = String.format(template, username, password, clusterEndpoint, readPreference);
 
-            String truststore = properties.getProperty("javax.net.ssl.trustStore");
-            String truststorePassword = properties.getProperty("javax.net.ssl.trustStorePassword");
+//            String truststore = properties.getProperty("javax.net.ssl.trustStore");
+//            String truststorePassword = properties.getProperty("javax.net.ssl.trustStorePassword");
 
-            System.setProperty("javax.net.ssl.trustStore", truststore);
-            System.setProperty("javax.net.ssl.trustStorePassword", truststorePassword);
+//            System.setProperty("javax.net.ssl.trustStore", truststore);
+//            System.setProperty("javax.net.ssl.trustStorePassword", truststorePassword);
 
             MongoClient mongoClient = MongoClients.create(connectionString);
 
