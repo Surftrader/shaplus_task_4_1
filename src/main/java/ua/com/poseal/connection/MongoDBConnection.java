@@ -1,12 +1,9 @@
 package ua.com.poseal.connection;
 
-import com.mongodb.ConnectionString;
-import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 
-import javax.print.attribute.standard.JobOriginatingUserName;
 import java.util.Properties;
 
 import static ua.com.poseal.App.logger;
@@ -30,40 +27,37 @@ public class MongoDBConnection implements Connection {
     @Override
     public MongoDatabase getDatabase(Properties properties) {
         // Creating a MongoDB Client
-        MongoDatabase database = null;
+        MongoDatabase mongoDatabase = null;
         try {
-//            ConnectionString connectionString = new ConnectionString(properties.getProperty(URL));
 
-            //:27017/?ssl=true&ssl_ca_certs=/config/global-bundle.pem&retryWrites=false
-
-            String template = "mongodb://%s:%s@%s/shapp_db?%s";
+            String template = "mongodb://%s:%s@%s/%s?%s";
             String username = properties.getProperty(USERNAME);
             String password = properties.getProperty(PASSWORD);
-            String clusterEndpoint = "docdb-2023-07-17-17-11-32.cqqiakrcxslc.eu-west-3.docdb.amazonaws.com:27017";
+            String clusterEndpoint = properties.getProperty(URL);
+            String database = properties.getProperty(DATABASE);
+            String readPreference = "ssl=true&ssl_ca_certs=/var/lib/jenkins/workspace/mall/config/global-bundle.pem&" +
+                    "retryWrites=false&" +
+                    "javax.net.ssl.trustStore=/home/ec2-user/rds-truststore.jks&" +
+                    "javax.net.ssl.trustStorePassword=storepassword";
+
+            String connectionString = String.format(
+                    template, username, password, clusterEndpoint, database, readPreference);
 //            String readPreference = "ssl=true&ssl_ca_certs=/config/global-bundle.pem&retryWrites=false&javax.net.ssl.trustStore=/home/ec2-user/rds-truststore.jks&javax.net.ssl.trustStorePassword=storepassword";
-            String readPreference = "ssl=true&ssl_ca_certs=/config/global-bundle.pem&retryWrites=false&javax.net.ssl.trustStore=/home/ec2-user/rds-truststore.jks&javax.net.ssl.trustStorePassword=storepassword";
-            String connectionString = String.format(template, username, password, clusterEndpoint, readPreference);
-
-            String truststore = properties.getProperty("javax.net.ssl.trustStore");
-            String truststorePassword = properties.getProperty("javax.net.ssl.trustStorePassword");
-
-            System.setProperty("javax.net.ssl.trustStore", truststore);
-            System.setProperty("javax.net.ssl.trustStorePassword", truststorePassword);
-
-            MongoClient mongoClient = MongoClients.create(connectionString);
-
-
-
+//            String truststore = properties.getProperty("javax.net.ssl.trustStore");
+//            String truststorePassword = properties.getProperty("javax.net.ssl.trustStorePassword");
+//            System.setProperty("javax.net.ssl.trustStore", truststore);
+//            System.setProperty("javax.net.ssl.trustStorePassword", truststorePassword);
 //            MongoClientSettings settings = MongoClientSettings.builder()
 //                    .applyConnectionString(connectionString)
 //                    .build();
 //            mongoClient = MongoClients.create(settings);
-            database = mongoClient.getDatabase(properties.getProperty(DATABASE));
+            mongoClient = MongoClients.create(connectionString);
+            mongoDatabase = mongoClient.getDatabase(properties.getProperty(DATABASE));
 
         } catch (Exception e) {
-            logger.error("Error connection to database {}", properties.getProperty(DATABASE));
+            logger.error("Error connection to mongoDatabase {}", properties.getProperty(DATABASE));
         }
-        return database;
+        return mongoDatabase;
     }
 
     @Override
