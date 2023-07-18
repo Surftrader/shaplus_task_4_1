@@ -21,3 +21,26 @@
 5585 [main] INFO  LOGGER - File was created by path=config/application.properties
 5586 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
 5586 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1385 [main] INFO  LOGGER - File was created by path=config/application.properties
+1402 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1403 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1473 [main] INFO  LOGGER - File was created by path=config/application.properties
+1476 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1476 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+2613 [main] INFO  LOGGER - File was created by path=config/application.properties
+2617 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2619 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+2924 [main] INFO  LOGGER - 13 products were generated per 0.272 s
+2928 [main] INFO  LOGGER - 10 valid products. 3 invalid products.
+2943 [main] INFO  LOGGER - 12 leftovers were generated per 0.015 s
+2989 [main] INFO  LOGGER - File was created by path=config/application.properties
+2991 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2992 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+3043 [main] INFO  LOGGER - 8 products were generated per 0.021 s
+3043 [main] INFO  LOGGER - 5 valid products. 3 invalid products.
+3053 [main] INFO  LOGGER - File was created by path=config/application.properties
+3054 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+3056 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+3067 [main] INFO  LOGGER - File was created by path=config/application.properties
+3085 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+3085 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
