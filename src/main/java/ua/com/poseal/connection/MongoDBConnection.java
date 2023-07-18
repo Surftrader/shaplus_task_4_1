@@ -40,7 +40,7 @@ public class MongoDBConnection implements Connection {
 //                    "retryWrites=false&" +
 //                    "javax.net.ssl.trustStore=/home/ec2-user/rds-truststore.jks&" +
 //                    "javax.net.ssl.trustStorePassword=storepassword";
-            String readPreference = "ssl=true&replicaSet=rs0&readpreference=secondaryPreferred";
+            String readPreference = "ssl=true&&ssl_ca_certs=/tmp/certs/global-bundle.pem&replicaSet=rs0&readpreference=secondaryPreferred";
 
             String connectionString = String.format(
                     template, username, password, clusterEndpoint, database, readPreference);
