@@ -44,3 +44,45 @@
 3067 [main] INFO  LOGGER - File was created by path=config/application.properties
 3085 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
 3085 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+2412 [main] INFO  LOGGER - File was created by path=config/application.properties
+2426 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2426 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+11272 [main] INFO  LOGGER - Count from categories = 10
+18353 [main] INFO  LOGGER - 400063 products were generated per 7.05 s
+18354 [main] INFO  LOGGER - 300000 valid products. 100063 invalid products.
+36795 [main] INFO  LOGGER - 300000 valid products were inserted into collections "products" per 17062 ms
+36853 [main] INFO  LOGGER - 16 stores were found in collections "stores" per 54 ms
+41055 [main] INFO  LOGGER - 300000 products were found in products collection
+57368 [main] INFO  LOGGER - 3000000 leftovers were generated per 11.945 s
+216699 [main] INFO  LOGGER - 3000000 rows were inserted into collections "leftover" per 102185 ms
+216711 [main] INFO  LOGGER - RPS = 29358.516416303763
+220163 [main] INFO  LOGGER - Time finding the address = 3444 ms
+220171 [main] INFO  LOGGER - The address of the store with the largest number of products in the category "Продукти": Київське шосе, 41, Полтава, count = 95318
+6177 [main] INFO  LOGGER - File was created by path=config/application.properties
+6197 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+6198 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+16383 [main] INFO  LOGGER - Count from categories = 10
+36799 [main] INFO  LOGGER - 400035 products were generated per 20.399 s
+36813 [main] INFO  LOGGER - 300000 valid products. 100035 invalid products.
+58638 [main] INFO  LOGGER - 300000 valid products were inserted into collections "products" per 19200 ms
+58719 [main] INFO  LOGGER - 16 stores were found in collections "stores" per 76 ms
+63934 [main] INFO  LOGGER - 300000 products were found in products collection
+71238 [main] INFO  LOGGER - 3000000 leftovers were generated per 6.224 s
+266123 [main] INFO  LOGGER - 3000000 rows were inserted into collections "leftover" per 130518 ms
+266193 [main] INFO  LOGGER - RPS = 22985.335356042844
+268117 [main] INFO  LOGGER - Time finding the address = 1899 ms
+268117 [main] INFO  LOGGER - The address of the store with the largest number of products in the category "Продукти": вул. Батозька, 1-В, Винниця, count = 95142
+2299 [main] INFO  LOGGER - File was created by path=config/application.properties
+2334 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2342 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+6142 [main] INFO  LOGGER - Count from categories = 10
+12141 [main] INFO  LOGGER - 399636 products were generated per 5.969 s
+12142 [main] INFO  LOGGER - 300000 valid products. 99636 invalid products.
+30569 [main] INFO  LOGGER - 300000 valid products were inserted into collections "products" per 15887 ms
+30720 [main] INFO  LOGGER - 16 stores were found in collections "stores" per 149 ms
+36609 [main] INFO  LOGGER - 300000 products were found in products collection
+44898 [main] INFO  LOGGER - 3000000 leftovers were generated per 7.624 s
+235234 [main] INFO  LOGGER - 3000000 rows were inserted into collections "leftover" per 97539 ms
+235259 [main] INFO  LOGGER - RPS = 30756.927998031555
+237588 [main] INFO  LOGGER - Time finding the address = 2319 ms
+237588 [main] INFO  LOGGER - The address of the store with the largest number of products in the category "Продукти": вул. Городоцька, 302, Львів, count = 95650

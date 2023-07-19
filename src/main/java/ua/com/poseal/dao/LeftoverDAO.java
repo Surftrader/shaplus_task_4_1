@@ -3,6 +3,7 @@ package ua.com.poseal.dao;
 import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Indexes;
 import org.apache.commons.lang3.time.StopWatch;
 import org.bson.Document;
 import ua.com.poseal.connection.Connection;
@@ -19,11 +20,15 @@ import static ua.com.poseal.App.logger;
 public class LeftoverDAO implements DAO<Document> {
 
     private static final String LEFTOVER = "leftover";
-    private static final int BATCH_SIZE = 1000;
+    private static final int BATCH_SIZE = 20000;
     private final Properties properties;
     private final Connection connection;
-
     private final MongoCollection<Document> mongoCollection;
+    private final List<Document> aggregationQuery = Arrays.asList(null,
+            new Document("$group", new Document("_id", "$address")
+                    .append("totalAmount", new Document("$sum", "$amount"))),
+            new Document("$sort", new Document("totalAmount", -1L)),
+            new Document("$limit", 1L));
 
     public LeftoverDAO(Properties properties) {
         this.properties = properties;
@@ -58,6 +63,9 @@ public class LeftoverDAO implements DAO<Document> {
 
         stopWatch.stop();
         long countDocuments = mongoCollection.countDocuments();
+        mongoCollection.createIndex(Indexes.ascending("category"));
+        mongoCollection.createIndex(Indexes.ascending("address"));
+
         logger.info("{} rows were inserted into collections \"{}\" per {} ms",
                 countDocuments, LEFTOVER, stopWatch.getTime(TimeUnit.MILLISECONDS));
         logger.info("RPS = {}", 1000.0 * countDocuments / stopWatch.getTime());
@@ -80,14 +88,8 @@ public class LeftoverDAO implements DAO<Document> {
     }
 
     private AggregateIterable<Document> doQuery(String category) {
-        return mongoCollection.aggregate(
-                Arrays.asList(new Document("$match", new Document("category", category)),
-                        new Document("$group", new Document("_id", "$address")
-                                .append("totalAmount", new Document("$sum", "$amount"))),
-                        new Document("$sort", new Document("totalAmount", -1L)),
-                        new Document("$limit", 1L)
-                )
-        );
+        aggregationQuery.set(0, new Document("$match", new Document("category", category)));
+        return mongoCollection.aggregate(aggregationQuery);
     }
 
     private LeftoverDTO initLeftoverDTO(AggregateIterable<Document> result) {
