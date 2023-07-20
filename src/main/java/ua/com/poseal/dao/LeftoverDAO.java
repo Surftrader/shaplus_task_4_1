@@ -49,10 +49,7 @@ public class LeftoverDAO implements DAO<Document> {
 
     public void insertLeftover(List<Document> documents) {
         logger.debug("Entered insertDocument() method with Document list = {} num", documents.size());
-
         mongoCollection.insertMany(documents);
-
-        logger.info("{} rows were inserted into collections \"{}\"", documents.size(), LEFTOVER);
         logger.debug("Exited insertDocument() method");
     }
 
