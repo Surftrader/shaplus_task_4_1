@@ -20,6 +20,8 @@ import static ua.com.poseal.App.logger;
 public class LeftoverDAO implements DAO<Document> {
 
     private static final String LEFTOVER = "leftover";
+    private static final String CATEGORY_FIELD = "category";
+    private static final String ADDRESS_FIELD = "address";
     private static final int BATCH_SIZE = 20000;
     private final Properties properties;
     private final Connection connection;
@@ -63,14 +65,18 @@ public class LeftoverDAO implements DAO<Document> {
 
         stopWatch.stop();
         long countDocuments = mongoCollection.countDocuments();
-        mongoCollection.createIndex(Indexes.ascending("category"));
-        mongoCollection.createIndex(Indexes.ascending("address"));
+        createIndex(CATEGORY_FIELD);
+        createIndex(ADDRESS_FIELD);
 
         logger.info("{} rows were inserted into collections \"{}\" per {} ms",
                 countDocuments, LEFTOVER, stopWatch.getTime(TimeUnit.MILLISECONDS));
         logger.info("RPS = {}", 1000.0 * countDocuments / stopWatch.getTime());
         logger.debug("Exited insertDocument() method");
 
+    }
+
+    private void createIndex(String fieldName) {
+        mongoCollection.createIndex(Indexes.ascending(fieldName));
     }
 
     public LeftoverDTO findAddressByCategory(String category) {

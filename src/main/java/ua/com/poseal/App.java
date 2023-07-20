@@ -3,8 +3,6 @@ package ua.com.poseal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ua.com.poseal.dto.LeftoverDTO;
-import ua.com.poseal.service.LeftoverService;
-import ua.com.poseal.service.ProductService;
 import ua.com.poseal.util.Loader;
 import ua.com.poseal.util.MongoDBExecutor;
 
