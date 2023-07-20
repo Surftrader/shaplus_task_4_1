@@ -50,16 +50,13 @@ public class LeftoverService {
         List<Document> list = new ArrayList<>(BATCH_SIZE);
         long counter = 0;
         for (int i = 0; i < batches; i++) {
-            for (int j = 0; j < BATCH_SIZE; j++) {
-                counter = insertLeftover(storeList, productList, list, counter);
-            }
+            counter = insertLeftover(BATCH_SIZE, storeList, productList, list, counter);
         }
+
 
         int rest = leftoverRows - batches * BATCH_SIZE;
         if (rest > 0) {
-            for (int i = 0; i < rest; i++) {
-                insertLeftover(storeList, productList, list, counter);
-            }
+            insertLeftover(rest, storeList, productList, list, counter);
         }
 
         stopWatch.stop();
@@ -71,10 +68,12 @@ public class LeftoverService {
         logger.debug("logger.debug(\"Entered saveLeftover() method\"); saveLeftover() method");
     }
 
-    private long insertLeftover(List<Store> storeList, List<Product> productList, List<Document> list, long counter) {
-        LeftoverDTO leftoverDTO = generator.generateLeftoverDTO(storeList, productList);
-        leftoverDTO.setId(++counter);
-        list.add(mapper.objectToDocument(leftoverDTO));
+    private long insertLeftover(int batch, List<Store> storeList, List<Product> productList, List<Document> list, long counter) {
+        for (int j = 0; j < batch; j++) {
+            LeftoverDTO leftoverDTO = generator.generateLeftoverDTO(storeList, productList);
+            leftoverDTO.setId(++counter);
+            list.add(mapper.objectToDocument(leftoverDTO));
+        }
         leftoverDAO.insertLeftover(list);
         list.clear();
         return counter;

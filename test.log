@@ -160,3 +160,25 @@
 907  [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
 1725 [main] INFO  LOGGER - 14 products were generated per 0.188 s
 1725 [main] INFO  LOGGER - 10 valid products. 4 invalid products.
+1247 [main] INFO  LOGGER - File was created by path=config/application.properties
+1297 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1298 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+9342 [main] INFO  LOGGER - Count from categories = 10
+9904 [main] INFO  LOGGER - 2680 products were generated per 0.551 s
+9904 [main] INFO  LOGGER - 2000 valid products. 680 invalid products.
+11349 [main] INFO  LOGGER - 2000 valid products were inserted into collections "products" per 1378 ms
+11749 [main] INFO  LOGGER - 16 stores were found in collections "stores" per 399 ms
+11879 [main] INFO  LOGGER - 2000 products were found in products collection
+1238 [main] INFO  LOGGER - File was created by path=config/application.properties
+1253 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1253 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+3904 [main] INFO  LOGGER - Count from categories = 10
+4242 [main] INFO  LOGGER - 2654 products were generated per 0.319 s
+4243 [main] INFO  LOGGER - 2000 valid products. 654 invalid products.
+4386 [main] INFO  LOGGER - 2000 valid products were inserted into collections "products" per 131 ms
+4457 [main] INFO  LOGGER - 16 stores were found in collections "stores" per 69 ms
+4520 [main] INFO  LOGGER - 2000 products were found in products collection
+52888 [main] INFO  LOGGER - 3000001 rows were generated and inserted into collections "leftover" per 48 s
+52892 [main] INFO  LOGGER - RPS = 62500
+86909 [main] INFO  LOGGER - Time finding the address = 1145 ms
+86912 [main] INFO  LOGGER - The address of the store with the largest number of products in the category "Продукти": вул. 600-річчя, 17, Винниця, count = 78932
