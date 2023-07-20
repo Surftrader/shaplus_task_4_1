@@ -31,7 +31,7 @@ public class LeftoverService {
         this.leftoverDAO = new LeftoverDAO(properties);
         this.storeService = new StoreService(properties);
         this.productService = new ProductService(properties);
-        this.generator = new Generator(properties);
+        this.generator = new Generator();
         this.mapper = new Mapper();
     }
 
@@ -48,11 +48,12 @@ public class LeftoverService {
         int leftoverRows = Integer.parseInt(properties.getProperty(LEFTOVER));
         int batches = leftoverRows / BATCH_SIZE;
         List<Document> list = new ArrayList<>(BATCH_SIZE);
-        insertLeftover(storeList, productList, list, batches);
+        long counter = 0;
+        counter = insertLeftover(storeList, productList, batches, list, counter);
 
         int rest = leftoverRows - batches * BATCH_SIZE;
         if (rest > 0) {
-            insertLeftover(storeList, productList, list, rest);
+            insertLeftover(storeList, productList, rest, list, counter);
         }
 
         stopWatch.stop();
@@ -64,12 +65,16 @@ public class LeftoverService {
         logger.debug("logger.debug(\"Entered saveLeftover() method\"); saveLeftover() method");
     }
 
-    private void insertLeftover(List<Store> storeList, List<Product> productList, List<Document> list, int rest) {
-        for (int i = 0; i < rest; i++) {
-            list.add(mapper.objectToDocument(generator.generateLeftoverDTO(storeList, productList)));
+    private long insertLeftover(List<Store> storeList, List<Product> productList,
+                                int batches, List<Document> list, long counter) {
+        for (int i = 0; i < batches; i++) {
+            LeftoverDTO leftoverDTO = generator.generateLeftoverDTO(storeList, productList);
+            leftoverDTO.setId(++counter);
+            list.add(mapper.objectToDocument(leftoverDTO));
             leftoverDAO.insertLeftover(list);
             list.clear();
         }
+        return counter;
     }
 
     public LeftoverDTO findAddressByCategory(String category) {

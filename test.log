@@ -86,3 +86,77 @@
 235259 [main] INFO  LOGGER - RPS = 30756.927998031555
 237588 [main] INFO  LOGGER - Time finding the address = 2319 ms
 237588 [main] INFO  LOGGER - The address of the store with the largest number of products in the category "Продукти": вул. Городоцька, 302, Львів, count = 95650
+1698 [main] INFO  LOGGER - File was created by path=config/application.properties
+1724 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1724 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1761 [main] INFO  LOGGER - File was created by path=config/application.properties
+1762 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1762 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+3323 [main] INFO  LOGGER - File was created by path=config/application.properties
+3323 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+3324 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+3786 [main] INFO  LOGGER - 12 products were generated per 0.391 s
+3786 [main] INFO  LOGGER - 10 valid products. 2 invalid products.
+3804 [main] INFO  LOGGER - 13 leftovers were generated per 0.017 s
+3812 [main] INFO  LOGGER - File was created by path=config/application.properties
+3813 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+3814 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+3861 [main] INFO  LOGGER - 9 products were generated per 0.028 s
+3861 [main] INFO  LOGGER - 5 valid products. 4 invalid products.
+3873 [main] INFO  LOGGER - File was created by path=config/application.properties
+3874 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+3874 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+3888 [main] INFO  LOGGER - File was created by path=config/application.properties
+3893 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+3893 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+4017 [main] ERROR LOGGER - Error connection to mongoDatabase shapp_db
+1631 [main] INFO  LOGGER - File was created by path=config/application.properties
+1648 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1650 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1689 [main] INFO  LOGGER - File was created by path=config/application.properties
+1690 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1690 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+3488 [main] INFO  LOGGER - File was created by path=config/application.properties
+3490 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+3490 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+3962 [main] INFO  LOGGER - 14 products were generated per 0.411 s
+3963 [main] INFO  LOGGER - 10 valid products. 4 invalid products.
+3963 [main] INFO  LOGGER - 0 leftovers were generated per 0.0 s
+3969 [main] INFO  LOGGER - File was created by path=config/application.properties
+3970 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+3970 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+4007 [main] INFO  LOGGER - 8 products were generated per 0.016 s
+4007 [main] INFO  LOGGER - 5 valid products. 3 invalid products.
+4020 [main] INFO  LOGGER - File was created by path=config/application.properties
+4021 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+4022 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+4028 [main] INFO  LOGGER - File was created by path=config/application.properties
+4029 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+4030 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1069 [main] INFO  LOGGER - File was created by path=config/application.properties
+1085 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1089 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1123 [main] INFO  LOGGER - File was created by path=config/application.properties
+1123 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1124 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+2374 [main] INFO  LOGGER - File was created by path=config/application.properties
+2374 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2375 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+2659 [main] INFO  LOGGER - 15 products were generated per 0.239 s
+2659 [main] INFO  LOGGER - 10 valid products. 5 invalid products.
+2691 [main] INFO  LOGGER - File was created by path=config/application.properties
+2692 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2695 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+2715 [main] INFO  LOGGER - 6 products were generated per 0.01 s
+2716 [main] INFO  LOGGER - 5 valid products. 1 invalid products.
+2726 [main] INFO  LOGGER - File was created by path=config/application.properties
+2726 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2727 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+2731 [main] INFO  LOGGER - File was created by path=config/application.properties
+2732 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2733 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+893  [main] INFO  LOGGER - File was created by path=config/application.properties
+899  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+907  [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1725 [main] INFO  LOGGER - 14 products were generated per 0.188 s
+1725 [main] INFO  LOGGER - 10 valid products. 4 invalid products.

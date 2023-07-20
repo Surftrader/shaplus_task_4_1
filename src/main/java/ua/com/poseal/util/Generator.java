@@ -25,16 +25,13 @@ public class Generator {
     private static final int LETTERS_IN_ALPHABET = 26;
     private static final int MIN_AMOUNT = 1;
     private static final int MAX_AMOUNT = 10;
-
-    private final Properties properties;
     private final Random random;
     private final Validator validator;
     private final Data data;
 
     private long count = 1;
 
-    public Generator(Properties properties) {
-        this.properties = properties;
+    public Generator() {
         this.random = new Random();
         this.validator = Validation.buildDefaultValidatorFactory().getValidator();
         this.data = new Data();
@@ -100,36 +97,13 @@ public class Generator {
     public LeftoverDTO generateLeftoverDTO(List<Store> storeList, List<Product> productList) {
         logger.debug("Entered generateLeftoverDTO() method with parameter storeList={}, productList={}",
                 storeList.size(), productList.size());
-//        StopWatch stopWatch = new StopWatch();
-//        stopWatch.start();
 
-//        List<LeftoverDTO> leftoverList = new ArrayList<>();
-        long counter = 0;
-        int limit = Integer.parseInt(properties.getProperty(LEFTOVER));
-//        while (counter < limit) {
         int randomIndexStore = random.nextInt(storeList.size());
         int randomIndexProduct = random.nextInt(productList.size());
 
         Store store = storeList.get(randomIndexStore);
         Product product = productList.get(randomIndexProduct);
-
-//            leftoverList.add(
-//                    new LeftoverDTO(
-//                            ++counter,
-//                            store.getName(),
-//                            store.getAddress().toString(),
-//                            product.getCategory().toString(),
-//                            product.getName(),
-//                            generateAmount()
-//                    )
-//            );
-//        }
-
-
-//        stopWatch.stop();
-//        logger.info("{} leftovers were generated per {} s", counter, stopWatch.getTime() / 1000.0);
         LeftoverDTO leftoverDTO = new LeftoverDTO(
-                ++counter,
                 store.getName(),
                 store.getAddress().toString(),
                 product.getCategory().toString(),

@@ -17,6 +17,14 @@ public class LeftoverDTO {
         this.amount = amount;
     }
 
+    public LeftoverDTO(String store, String address, String category, String product, int amount) {
+        this.store = store;
+        this.address = address;
+        this.category = category;
+        this.product = product;
+        this.amount = amount;
+    }
+
     public LeftoverDTO(String address, int totalAmount) {
         this.address = address;
         this.amount = totalAmount;
@@ -24,6 +32,10 @@ public class LeftoverDTO {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getStore() {

@@ -22,7 +22,7 @@ public class ProductService {
     public ProductService(Properties properties) {
         this.properties = properties;
         this.productDAO = new ProductDAO(properties);
-        this.generator = new Generator(properties);
+        this.generator = new Generator();
         this.mapper = new Mapper();
     }
 

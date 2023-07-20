@@ -26,7 +26,7 @@ class GeneratorTest {
     void init() {
         data = new Data();
         properties = new Loader().getFileProperties();
-        this.generator = new Generator(properties);
+        this.generator = new Generator();
     }
 
     @Test
@@ -64,9 +64,8 @@ class GeneratorTest {
         int categories = data.getCategories().size();
         List<Product> productList = generator.generateProducts(products, categories);
 
-        List<LeftoverDTO> leftoverDTOS = generator.generateLeftoverDTO(storeList, productList);
+        LeftoverDTO leftoverDTOS = generator.generateLeftoverDTO(storeList, productList);
 
         assertNotNull(leftoverDTOS);
-        assertEquals(limitProducts, leftoverDTOS.size());
     }
 }

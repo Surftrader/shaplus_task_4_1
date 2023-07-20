@@ -22,7 +22,6 @@ public class LeftoverDAO implements DAO<Document> {
     private static final String LEFTOVER = "leftover";
     private static final String CATEGORY_FIELD = "category";
     private static final String ADDRESS_FIELD = "address";
-    private static final int BATCH_SIZE = 1000;
     private final Properties properties;
     private final Connection connection;
     private final MongoCollection<Document> mongoCollection;
