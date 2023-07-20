@@ -88,7 +88,13 @@ public class LeftoverDAO implements DAO<Document> {
     }
 
     public void createIndexes() {
-        mongoCollection.createIndex(Indexes.ascending(CATEGORY_FIELD));
-        mongoCollection.createIndex(Indexes.ascending(ADDRESS_FIELD));
+        logger.info("Start indexing the collection \"{}\" from fields \"{}\" and \"{}\"",
+                LEFTOVER, CATEGORY_FIELD, ADDRESS_FIELD);
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        mongoCollection.createIndex(Indexes.ascending(Arrays.asList(CATEGORY_FIELD, ADDRESS_FIELD)));
+        stopWatch.stop();
+        logger.info("Indexing took {} s", stopWatch.getTime(TimeUnit.SECONDS));
+        logger.info("Stop indexing");
     }
 }
