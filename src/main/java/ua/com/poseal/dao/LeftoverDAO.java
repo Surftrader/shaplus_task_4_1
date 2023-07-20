@@ -50,33 +50,11 @@ public class LeftoverDAO implements DAO<Document> {
 
     public void insertLeftover(List<Document> documents) {
         logger.debug("Entered insertDocument() method with Document list = {} num", documents.size());
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
 
-        int total = documents.size();
-        int batches = (int) Math.ceil((double) total / BATCH_SIZE);
+        mongoCollection.insertMany(documents);
 
-        for (int i = 0; i < batches; i++) {
-            int fromIndex = i * BATCH_SIZE;
-            int toIndex = Math.min(fromIndex + BATCH_SIZE, total);
-            List<Document> batch = documents.subList(fromIndex, toIndex);
-            mongoCollection.insertMany(batch);
-        }
-
-        stopWatch.stop();
-        long countDocuments = mongoCollection.countDocuments();
-        createIndex(CATEGORY_FIELD);
-        createIndex(ADDRESS_FIELD);
-
-        logger.info("{} rows were inserted into collections \"{}\" per {} ms",
-                countDocuments, LEFTOVER, stopWatch.getTime(TimeUnit.MILLISECONDS));
-        logger.info("RPS = {}", 1000.0 * countDocuments / stopWatch.getTime());
+        logger.info("{} rows were inserted into collections \"{}\"", documents.size(), LEFTOVER);
         logger.debug("Exited insertDocument() method");
-
-    }
-
-    private void createIndex(String fieldName) {
-        mongoCollection.createIndex(Indexes.ascending(fieldName));
     }
 
     public LeftoverDTO findAddressByCategory(String category) {
@@ -111,5 +89,10 @@ public class LeftoverDAO implements DAO<Document> {
     private MongoCollection<Document> getDocumentMongoCollection() {
         MongoDatabase database = connection.getDatabase(properties);
         return database.getCollection(LEFTOVER);
+    }
+
+    public void createIndexes() {
+        mongoCollection.createIndex(Indexes.ascending(CATEGORY_FIELD));
+        mongoCollection.createIndex(Indexes.ascending(ADDRESS_FIELD));
     }
 }

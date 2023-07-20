@@ -93,9 +93,9 @@ public class Mapper {
         );
     }
 
-    public List<Document> toDocuments(List<LeftoverDTO> dtos) {
-        return dtos.stream()
-                .map(this::objectToDocument)
-                .collect(Collectors.toList());
-    }
+//    public List<Document> toDocuments(List<LeftoverDTO> dtos) {
+//        return dtos.stream()
+//                .map(this::objectToDocument)
+//                .collect(Collectors.toList());
+//    }
 }

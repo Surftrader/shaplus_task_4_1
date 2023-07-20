@@ -2,6 +2,7 @@ package ua.com.poseal.util;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Indexes;
 import org.bson.Document;
 import ua.com.poseal.connection.Connection;
 import ua.com.poseal.connection.MongoDBConnection;
@@ -76,5 +77,9 @@ public class MongoDBExecutor {
 
     public LeftoverDTO findAddressByCategory(String category) {
         return leftoverService.findAddressByCategory(category);
+    }
+
+    public void createIndexes() {
+        leftoverService.createIndexes();
     }
 }

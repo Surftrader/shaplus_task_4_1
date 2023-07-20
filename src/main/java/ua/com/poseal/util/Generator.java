@@ -97,38 +97,47 @@ public class Generator {
         return products;
     }
 
-    public List<LeftoverDTO> generateLeftoverDTO(List<Store> storeList, List<Product> productList) {
+    public LeftoverDTO generateLeftoverDTO(List<Store> storeList, List<Product> productList) {
         logger.debug("Entered generateLeftoverDTO() method with parameter storeList={}, productList={}",
                 storeList.size(), productList.size());
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
+//        StopWatch stopWatch = new StopWatch();
+//        stopWatch.start();
 
-        List<LeftoverDTO> leftoverList = new LinkedList<>();
+//        List<LeftoverDTO> leftoverList = new ArrayList<>();
         long counter = 0;
         int limit = Integer.parseInt(properties.getProperty(LEFTOVER));
-        while (counter < limit) {
-            int randomIndexStore = random.nextInt(storeList.size());
-            int randomIndexProduct = random.nextInt(productList.size());
+//        while (counter < limit) {
+        int randomIndexStore = random.nextInt(storeList.size());
+        int randomIndexProduct = random.nextInt(productList.size());
 
-            Store store = storeList.get(randomIndexStore);
-            Product product = productList.get(randomIndexProduct);
+        Store store = storeList.get(randomIndexStore);
+        Product product = productList.get(randomIndexProduct);
 
-            leftoverList.add(
-                    new LeftoverDTO(
-                            ++counter,
-                            store.getName(),
-                            store.getAddress().toString(),
-                            product.getCategory().toString(),
-                            product.getName(),
-                            generateAmount()
-                    )
-            );
-        }
+//            leftoverList.add(
+//                    new LeftoverDTO(
+//                            ++counter,
+//                            store.getName(),
+//                            store.getAddress().toString(),
+//                            product.getCategory().toString(),
+//                            product.getName(),
+//                            generateAmount()
+//                    )
+//            );
+//        }
 
-        stopWatch.stop();
-        logger.info("{} leftovers were generated per {} s", counter, stopWatch.getTime() / 1000.0);
+
+//        stopWatch.stop();
+//        logger.info("{} leftovers were generated per {} s", counter, stopWatch.getTime() / 1000.0);
+        LeftoverDTO leftoverDTO = new LeftoverDTO(
+                ++counter,
+                store.getName(),
+                store.getAddress().toString(),
+                product.getCategory().toString(),
+                product.getName(),
+                generateAmount()
+        );
         logger.debug("Exited generateLeftoverDTO() method");
-        return leftoverList;
+        return leftoverDTO;
     }
 
     private int generateAmount() {

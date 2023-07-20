@@ -1,5 +1,6 @@
 package ua.com.poseal.service;
 
+import org.apache.commons.lang3.time.StopWatch;
 import org.bson.Document;
 import ua.com.poseal.dao.LeftoverDAO;
 import ua.com.poseal.domain.Product;
@@ -8,10 +9,17 @@ import ua.com.poseal.dto.LeftoverDTO;
 import ua.com.poseal.util.Generator;
 import ua.com.poseal.util.Mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import static ua.com.poseal.App.logger;
 
 public class LeftoverService {
+    private static final String LEFTOVER = "leftover";
+    private static final int BATCH_SIZE = 10000;
+    private final Properties properties;
     private final LeftoverDAO leftoverDAO;
     private final StoreService storeService;
     private final ProductService productService;
@@ -19,6 +27,7 @@ public class LeftoverService {
     private final Mapper mapper;
 
     public LeftoverService(Properties properties) {
+        this.properties = properties;
         this.leftoverDAO = new LeftoverDAO(properties);
         this.storeService = new StoreService(properties);
         this.productService = new ProductService(properties);
@@ -27,15 +36,47 @@ public class LeftoverService {
     }
 
     public void saveLeftover() {
+        logger.debug("Entered saveLeftover() method");
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
         // find stores
         List<Store> storeList = storeService.getAll();
         // find products
         List<Product> productList = productService.getAll();
-        List<Document> documents = mapper.toDocuments(generator.generateLeftoverDTO(storeList, productList));
-        leftoverDAO.insertLeftover(documents);
+
+        int leftoverRows = Integer.parseInt(properties.getProperty(LEFTOVER));
+        int batches = leftoverRows / BATCH_SIZE;
+        List<Document> list = new ArrayList<>(BATCH_SIZE);
+        insertLeftover(storeList, productList, list, batches);
+
+        int rest = leftoverRows - batches * BATCH_SIZE;
+        if (rest > 0) {
+            insertLeftover(storeList, productList, list, rest);
+        }
+
+        stopWatch.stop();
+
+        logger.info(
+                "{} rows were generated and inserted into collections \"{}\" per {} s",
+                leftoverRows, LEFTOVER, stopWatch.getTime(TimeUnit.SECONDS));
+        logger.info("RPS = {}", leftoverRows / stopWatch.getTime(TimeUnit.SECONDS));
+        logger.debug("logger.debug(\"Entered saveLeftover() method\"); saveLeftover() method");
+    }
+
+    private void insertLeftover(List<Store> storeList, List<Product> productList, List<Document> list, int rest) {
+        for (int i = 0; i < rest; i++) {
+            list.add(mapper.objectToDocument(generator.generateLeftoverDTO(storeList, productList)));
+            leftoverDAO.insertLeftover(list);
+            list.clear();
+        }
     }
 
     public LeftoverDTO findAddressByCategory(String category) {
         return leftoverDAO.findAddressByCategory(category);
+    }
+
+    public void createIndexes() {
+        leftoverDAO.createIndexes();
     }
 }

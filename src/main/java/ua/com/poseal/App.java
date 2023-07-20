@@ -37,6 +37,8 @@ public class App {
         executor.saveProducts(Long.parseLong(properties.getProperty(PRODUCTS)));
         // Fill leftover collection
         executor.saveLeftover();
+
+        executor.createIndexes();
         // query task
         LeftoverDTO dto = executor.findAddressByCategory(properties.getProperty(CATEGORY));
         logger.info(
