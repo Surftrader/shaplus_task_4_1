@@ -369,3 +369,31 @@
 66880 [main] INFO  LOGGER - Stop indexing
 68237 [main] INFO  LOGGER - Time finding the address = 1356 ms
 68238 [main] INFO  LOGGER - The address of the store with the largest number of products in the category "Зоотовари": Запорізьке шосе, 62-К, Дніпро, count = 92856
+1102 [main] INFO  LOGGER - File was created by path=config/application.properties
+1115 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1116 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1230 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+1237 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+1238 [main] INFO  LOGGER - File was created by path=config/application.properties
+1239 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1240 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+2402 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+2404 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+2405 [main] INFO  LOGGER - File was created by path=config/application.properties
+2406 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2406 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+2675 [main] INFO  LOGGER - 11 products were generated per 0.253 s
+2676 [main] INFO  LOGGER - 10 valid products. 1 invalid products.
+2692 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+2694 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+2695 [main] INFO  LOGGER - File was created by path=config/application.properties
+2695 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2695 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+2714 [main] INFO  LOGGER - 6 products were generated per 0.01 s
+2714 [main] INFO  LOGGER - 5 valid products. 1 invalid products.
+2722 [main] INFO  LOGGER - File was created by path=config/application.properties
+2725 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2726 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+2729 [main] INFO  LOGGER - File was created by path=config/application.properties
+2730 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2730 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
