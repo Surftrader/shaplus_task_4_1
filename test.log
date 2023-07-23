@@ -397,3 +397,31 @@
 2729 [main] INFO  LOGGER - File was created by path=config/application.properties
 2730 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
 2730 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+4019 [main] INFO  LOGGER - File was created by path=config/application.properties
+4064 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+4068 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+4399 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+4406 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+4407 [main] INFO  LOGGER - File was created by path=config/application.properties
+4412 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+4413 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+7096 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+7099 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+7099 [main] INFO  LOGGER - File was created by path=config/application.properties
+7100 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+7102 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+7649 [main] INFO  LOGGER - 12 products were generated per 0.484 s
+7650 [main] INFO  LOGGER - 10 valid products. 2 invalid products.
+7685 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+7687 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+7687 [main] INFO  LOGGER - File was created by path=config/application.properties
+7688 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+7688 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+7734 [main] INFO  LOGGER - 7 products were generated per 0.033 s
+7734 [main] INFO  LOGGER - 5 valid products. 2 invalid products.
+7755 [main] INFO  LOGGER - File was created by path=config/application.properties
+7756 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+7757 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+7764 [main] INFO  LOGGER - File was created by path=config/application.properties
+7773 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+7773 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties

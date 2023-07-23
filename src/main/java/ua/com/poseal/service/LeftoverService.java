@@ -52,8 +52,8 @@ public class LeftoverService {
         long counter = 0;
         for (int i = 0; i < batches; i++) {
             counter = insertLeftover(BATCH_SIZE, storeList, productList, list, counter);
+            list.clear();
         }
-
 
         int rest = leftoverRows - batches * BATCH_SIZE;
         if (rest > 0) {
@@ -76,7 +76,6 @@ public class LeftoverService {
             list.add(mapper.objectToDocument(leftoverDTO));
         }
         leftoverDAO.insertLeftover(list);
-        list.clear();
         return counter;
     }
 
