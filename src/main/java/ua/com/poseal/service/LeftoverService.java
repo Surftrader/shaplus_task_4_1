@@ -3,6 +3,7 @@ package ua.com.poseal.service;
 import org.apache.commons.lang3.time.StopWatch;
 import org.bson.Document;
 import ua.com.poseal.dao.LeftoverDAO;
+import ua.com.poseal.data.Data;
 import ua.com.poseal.domain.Product;
 import ua.com.poseal.domain.Store;
 import ua.com.poseal.dto.LeftoverDTO;
@@ -26,12 +27,12 @@ public class LeftoverService {
     private final Generator generator;
     private final Mapper mapper;
 
-    public LeftoverService(Properties properties) {
+    public LeftoverService(Properties properties, Data data) {
         this.properties = properties;
         this.leftoverDAO = new LeftoverDAO(properties);
-        this.storeService = new StoreService(properties);
-        this.productService = new ProductService(properties);
-        this.generator = new Generator();
+        this.storeService = new StoreService(properties, data);
+        this.productService = new ProductService(properties, data);
+        this.generator = new Generator(data);
         this.mapper = new Mapper();
     }
 

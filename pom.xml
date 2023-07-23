@@ -79,6 +79,12 @@
             <artifactId>hibernate-validator-cdi</artifactId>
             <version>8.0.0.Final</version>
         </dependency>
+        <!--   Open CSV file    -->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.7.1</version>
+        </dependency>
         <!-- JDBC DRIVER -->
         <dependency>
             <groupId>org.mongodb</groupId>

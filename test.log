@@ -182,3 +182,190 @@
 52892 [main] INFO  LOGGER - RPS = 62500
 86909 [main] INFO  LOGGER - Time finding the address = 1145 ms
 86912 [main] INFO  LOGGER - The address of the store with the largest number of products in the category "Продукти": вул. 600-річчя, 17, Винниця, count = 78932
+4136 [main] INFO  LOGGER - File was created by path=config/application.properties
+4188 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+4190 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1212 [main] INFO  LOGGER - File was created by path=config/application.properties
+1223 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1224 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1390 [main] INFO  LOGGER - File was created by path=config/application.properties
+1400 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1400 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1456 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+1462 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+1463 [main] INFO  LOGGER - 1->Продукти
+1463 [main] INFO  LOGGER - 2->Зоотовари
+1464 [main] INFO  LOGGER - 3->Електроніка
+1464 [main] INFO  LOGGER - 4->Спортивні товари
+1464 [main] INFO  LOGGER - 5->Канцтовари
+1464 [main] INFO  LOGGER - 6->Побутова техніка
+1464 [main] INFO  LOGGER - 7->Інструменти
+1464 [main] INFO  LOGGER - 8->Краса та здоров`я
+1464 [main] INFO  LOGGER - 9->Одяг, Взуття, Аксесуари
+1465 [main] INFO  LOGGER - 10->Аптека
+1465 [main] INFO  LOGGER - ------------
+1466 [main] INFO  LOGGER - 1->ТЦ ЕПІЦЕНТР-1, пр-т Степана Бандери, 36-А, Київ
+1476 [main] INFO  LOGGER - 2->ТЦ ЕПІЦЕНТР-2, пр-т Степана Бандери, 11-А, Київ
+1476 [main] INFO  LOGGER - 3->ТЦ ЕПІЦЕНТР-3, Дніпровська наб., 13-В, Київ
+1476 [main] INFO  LOGGER - 4->ТЦ ЕПІЦЕНТР-4, вул. Стартова, 9-А, Дніпро
+1476 [main] INFO  LOGGER - 5->ТЦ ЕПІЦЕНТР-5, Запорізьке шосе, 62-К, 13-В, Дніпро
+1476 [main] INFO  LOGGER - 6->ТЦ ЕПІЦЕНТР-6, Запорізьке шосе, 62-К, Дніпро
+1476 [main] INFO  LOGGER - 7->ТЦ ЕПІЦЕНТР-7, вул. Батозька, 1-В, Винниця
+1476 [main] INFO  LOGGER - 8->ТЦ ЕПІЦЕНТР-8, вул. 600-річчя, 17, Винниця
+1477 [main] INFO  LOGGER - 9->ТЦ ЕПІЦЕНТР-9, вул. Богдана Хмельницького, 188-А, Львів
+1477 [main] INFO  LOGGER - 10->ТЦ ЕПІЦЕНТР-10, вул. Городоцька, 302, Львів
+1477 [main] INFO  LOGGER - 11->ТЦ ЕПІЦЕНТР-11, вул. Щирецька, 7, Львів
+1478 [main] INFO  LOGGER - 12->ТЦ ЕПІЦЕНТР-12, пр-т Небесної Сотні, 2, Одеса
+1478 [main] INFO  LOGGER - 13->ТЦ ЕПІЦЕНТР-13, Київське шосе, 41, Полтава
+1478 [main] INFO  LOGGER - 14->ТЦ ЕПІЦЕНТР-14, вул. Героїв Праці, 9-А, Харків
+1478 [main] INFO  LOGGER - 15->ТЦ ЕПІЦЕНТР-15, пр-т Юрія Гагаріна, 352, Харків
+1478 [main] INFO  LOGGER - 16->ТЦ ЕПІЦЕНТР-16, вул. Євгена Котляра, 8/10-А, Харків
+1518 [main] INFO  LOGGER - File was created by path=config/application.properties
+1530 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1534 [main] INFO  LOGGER - The "Продукти" category was obtained from the properties
+1643 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+1668 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+21195 [main] INFO  LOGGER - Count from categories = 10
+21827 [main] INFO  LOGGER - 2681 products were generated per 0.606 s
+21827 [main] INFO  LOGGER - 2000 valid products. 681 invalid products.
+23782 [main] INFO  LOGGER - 2000 valid products were inserted into collections "products" per 1895 ms
+23889 [main] INFO  LOGGER - 16 stores were found in collections "stores" per 106 ms
+24242 [main] INFO  LOGGER - 2000 products were found in products collection
+99627 [main] INFO  LOGGER - 3000000 rows were generated and inserted into collections "leftover" per 75 s
+99633 [main] INFO  LOGGER - RPS = 40000
+99634 [main] INFO  LOGGER - Start indexing the collection "leftover" from fields "category" and "address"
+122451 [main] INFO  LOGGER - Indexing took 22 s
+122453 [main] INFO  LOGGER - Stop indexing
+124211 [main] INFO  LOGGER - Time finding the address = 1742 ms
+124215 [main] INFO  LOGGER - The address of the store with the largest number of products in the category "Продукти": Запорізьке шосе, 62-К, Дніпро, count = 94684
+709  [main] INFO  LOGGER - File was created by path=config/application.properties
+717  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+717  [main] INFO  LOGGER - The "????????" category was obtained from the properties
+724  [main] INFO  LOGGER - File was created by path=config/application.properties
+725  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+725  [main] INFO  LOGGER - The "????????" category was obtained from the properties
+1249 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+1260 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+1260 [main] INFO  LOGGER - File was created by path=config/application.properties
+1261 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1261 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+2126 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+2129 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+2129 [main] INFO  LOGGER - File was created by path=config/application.properties
+2130 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2130 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+2289 [main] INFO  LOGGER - 10 products were generated per 0.135 s
+2289 [main] INFO  LOGGER - 10 valid products. 0 invalid products.
+2302 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+2305 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+2305 [main] INFO  LOGGER - File was created by path=config/application.properties
+2305 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2306 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+2338 [main] INFO  LOGGER - 6 products were generated per 0.021 s
+2341 [main] INFO  LOGGER - 5 valid products. 1 invalid products.
+2346 [main] INFO  LOGGER - File was created by path=config/application.properties
+2347 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2347 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+749  [main] INFO  LOGGER - File was created by path=config/application.properties
+755  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+756  [main] INFO  LOGGER - The "????????" category was obtained from the properties
+762  [main] INFO  LOGGER - File was created by path=config/application.properties
+763  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+763  [main] INFO  LOGGER - The "????????" category was obtained from the properties
+935  [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+946  [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+946  [main] INFO  LOGGER - File was created by path=config/application.properties
+947  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+947  [main] INFO  LOGGER - The "????????" category was obtained from the properties
+1719 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+1722 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+1722 [main] INFO  LOGGER - File was created by path=config/application.properties
+1723 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1723 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+1878 [main] INFO  LOGGER - 11 products were generated per 0.133 s
+1878 [main] INFO  LOGGER - 10 valid products. 1 invalid products.
+1892 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+1895 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+1895 [main] INFO  LOGGER - File was created by path=config/application.properties
+1896 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1896 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+1912 [main] INFO  LOGGER - 9 products were generated per 0.008 s
+1912 [main] INFO  LOGGER - 5 valid products. 4 invalid products.
+1921 [main] INFO  LOGGER - File was created by path=config/application.properties
+1923 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1923 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+859  [main] INFO  LOGGER - File was created by path=config/application.properties
+873  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+874  [main] INFO  LOGGER - The "????????" category was obtained from the properties
+884  [main] INFO  LOGGER - File was created by path=config/application.properties
+885  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+885  [main] INFO  LOGGER - The "????????" category was obtained from the properties
+1241 [main] ERROR LOGGER - Error reading file categories.csv
+1242 [main] INFO  LOGGER - 0 categories were loaded from file categories.csv
+1242 [main] ERROR LOGGER - Error reading file stores.csv
+1243 [main] INFO  LOGGER - 0 stores were loaded from file stores.csv
+1243 [main] INFO  LOGGER - File was created by path=config/application.properties
+1243 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1244 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+2341 [main] ERROR LOGGER - Error reading file categories.csv
+2341 [main] INFO  LOGGER - 0 categories were loaded from file categories.csv
+2341 [main] ERROR LOGGER - Error reading file stores.csv
+2341 [main] INFO  LOGGER - 0 stores were loaded from file stores.csv
+2342 [main] INFO  LOGGER - File was created by path=config/application.properties
+2342 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2342 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+2365 [main] ERROR LOGGER - Error reading file categories.csv
+2365 [main] INFO  LOGGER - 0 categories were loaded from file categories.csv
+2365 [main] ERROR LOGGER - Error reading file stores.csv
+2365 [main] INFO  LOGGER - 0 stores were loaded from file stores.csv
+2365 [main] INFO  LOGGER - File was created by path=config/application.properties
+2366 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2366 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+2388 [main] INFO  LOGGER - File was created by path=config/application.properties
+2390 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+2392 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+567  [main] INFO  LOGGER - File was created by path=config/application.properties
+577  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+577  [main] INFO  LOGGER - The "????????" category was obtained from the properties
+586  [main] INFO  LOGGER - File was created by path=config/application.properties
+587  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+587  [main] INFO  LOGGER - The "????????" category was obtained from the properties
+776  [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+804  [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+806  [main] INFO  LOGGER - File was created by path=config/application.properties
+807  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+810  [main] INFO  LOGGER - The "????????" category was obtained from the properties
+1324 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+1327 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+1328 [main] INFO  LOGGER - File was created by path=config/application.properties
+1328 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1329 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+1446 [main] INFO  LOGGER - 13 products were generated per 0.108 s
+1446 [main] INFO  LOGGER - 10 valid products. 3 invalid products.
+1460 [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+1462 [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+1463 [main] INFO  LOGGER - File was created by path=config/application.properties
+1464 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1464 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+1483 [main] INFO  LOGGER - 6 products were generated per 0.009 s
+1483 [main] INFO  LOGGER - 5 valid products. 1 invalid products.
+1492 [main] INFO  LOGGER - File was created by path=config/application.properties
+1494 [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+1495 [main] INFO  LOGGER - The "????????" category was obtained from the properties
+807  [main] INFO  LOGGER - File was created by path=config/application.properties
+822  [main] INFO  LOGGER - Properties were downloaded from file=application.properties
+822  [main] INFO  LOGGER - The "Зоотовари" category was obtained from the properties
+884  [main] INFO  LOGGER - 10 categories were loaded from file categories.csv
+889  [main] INFO  LOGGER - 16 stores were loaded from file stores.csv
+3601 [main] INFO  LOGGER - 2623 products were generated per 0.3 s
+3605 [main] INFO  LOGGER - 2000 valid products. 623 invalid products.
+3796 [main] INFO  LOGGER - 2000 valid products were inserted into collections "products" per 143 ms
+3871 [main] INFO  LOGGER - 16 stores were found in collections "stores" per 74 ms
+3931 [main] INFO  LOGGER - 2000 products were found in products collection
+46762 [main] INFO  LOGGER - 3000000 rows were generated and inserted into collections "leftover" per 42 s
+46766 [main] INFO  LOGGER - RPS = 71428
+46767 [main] INFO  LOGGER - Start indexing the collection "leftover" from fields "category" and "address"
+66880 [main] INFO  LOGGER - Indexing took 20 s
+66880 [main] INFO  LOGGER - Stop indexing
+68237 [main] INFO  LOGGER - Time finding the address = 1356 ms
+68238 [main] INFO  LOGGER - The address of the store with the largest number of products in the category "Зоотовари": Запорізьке шосе, 62-К, Дніпро, count = 92856

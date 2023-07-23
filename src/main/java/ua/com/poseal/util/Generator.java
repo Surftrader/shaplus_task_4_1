@@ -31,10 +31,10 @@ public class Generator {
 
     private long count = 1;
 
-    public Generator() {
+    public Generator(Data data) {
         this.random = new Random();
         this.validator = Validation.buildDefaultValidatorFactory().getValidator();
-        this.data = new Data();
+        this.data = data;
     }
 
     public Product generateProduct(int categories) {

@@ -24,9 +24,9 @@ class GeneratorTest {
 
     @BeforeEach
     void init() {
-        data = new Data();
+        data = new Loader().loadDataFromFiles();
         properties = new Loader().getFileProperties();
-        this.generator = new Generator();
+        this.generator = new Generator(data);
     }
 
     @Test

@@ -5,6 +5,7 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import ua.com.poseal.connection.Connection;
 import ua.com.poseal.connection.MongoDBConnection;
+import ua.com.poseal.data.Data;
 import ua.com.poseal.dto.LeftoverDTO;
 import ua.com.poseal.service.CategoryService;
 import ua.com.poseal.service.LeftoverService;
@@ -23,18 +24,16 @@ public class MongoDBExecutor {
     private final MongoDatabase database;
     private final StoreService storeService;
     private final CategoryService categoryService;
-
     private final ProductService productService;
     private final LeftoverService leftoverService;
 
-
-    public MongoDBExecutor(Properties properties) {
+    public MongoDBExecutor(Properties properties, Data data) {
         this.connection = new MongoDBConnection();
         this.database = MongoDBConnection.getInstance().getDatabase(properties);
-        this.storeService = new StoreService(properties);
-        this.categoryService = new CategoryService(properties);
-        this.productService = new ProductService(properties);
-        this.leftoverService = new LeftoverService(properties);
+        this.storeService = new StoreService(properties, data);
+        this.categoryService = new CategoryService(properties, data);
+        this.productService = new ProductService(properties, data);
+        this.leftoverService = new LeftoverService(properties, data);
     }
 
     public void createCollections() {
