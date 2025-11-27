@@ -15,9 +15,9 @@ public class StoreService {
     private final Data data;
     private final Mapper mapper;
 
-    public StoreService(Properties properties) {
+    public StoreService(Properties properties, Data data) {
+        this.data = data;
         this.storeDAO = new StoreDAO(properties);
-        this.data = new Data();
         this.mapper = new Mapper();
     }
 

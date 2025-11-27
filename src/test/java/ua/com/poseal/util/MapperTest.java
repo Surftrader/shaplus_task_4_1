@@ -8,10 +8,8 @@ import ua.com.poseal.domain.*;
 import ua.com.poseal.dto.LeftoverDTO;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MapperTest {
 
@@ -157,30 +155,18 @@ class MapperTest {
     }
 
     @Test
-    void toDocuments() {
-        LeftoverDTO dto1 = new LeftoverDTO(
+    void toDocument() {
+        LeftoverDTO dto = new LeftoverDTO(
                 1L, "Store A", "Address A", "Category X", "Product A", 10);
-        LeftoverDTO dto2 = new LeftoverDTO(
-                2L, "Store B", "Address B", "Category Y", "Product B", 20);
-        LeftoverDTO dto3 = new LeftoverDTO(
-                3L, "Store C", "Address C", "Category X", "Product C", 30);
 
-        List<LeftoverDTO> dtos = Arrays.asList(dto1, dto2, dto3);
+        Document document = mapper.objectToDocument(dto);
 
-        List<Document> documents = mapper.toDocuments(dtos);
+        assertEquals(dto.getId(), document.getLong("_id"));
+        assertEquals(dto.getStore(), document.getString("store"));
+        assertEquals(dto.getAddress(), document.getString("address"));
+        assertEquals(dto.getCategory(), document.getString("category"));
+        assertEquals(dto.getProduct(), document.getString("product"));
+        assertEquals(dto.getAmount(), document.getInteger("amount").intValue());
 
-        assertEquals(dtos.size(), documents.size());
-
-        for (int i = 0; i < dtos.size(); i++) {
-            LeftoverDTO dto = dtos.get(i);
-            Document document = documents.get(i);
-
-            assertEquals(dto.getId(), document.getLong("_id"));
-            assertEquals(dto.getStore(), document.getString("store"));
-            assertEquals(dto.getAddress(), document.getString("address"));
-            assertEquals(dto.getCategory(), document.getString("category"));
-            assertEquals(dto.getProduct(), document.getString("product"));
-            assertEquals(dto.getAmount(), document.getInteger("amount").intValue());
-        }
     }
 }

@@ -2,9 +2,8 @@ package ua.com.poseal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ua.com.poseal.data.Data;
 import ua.com.poseal.dto.LeftoverDTO;
-import ua.com.poseal.service.LeftoverService;
-import ua.com.poseal.service.ProductService;
 import ua.com.poseal.util.Loader;
 import ua.com.poseal.util.MongoDBExecutor;
 
@@ -30,23 +29,24 @@ public class App {
     private void run() {
         logger.debug("Entered run() method");
         // Load properties
-        Properties properties = new Loader().getFileProperties();
+        Loader loader = new Loader();
+        Properties properties = loader.getFileProperties();
+        // Load data from files
+        Data data = loader.loadDataFromFiles();
 
-        MongoDBExecutor executor = new MongoDBExecutor(properties);
+        MongoDBExecutor executor = new MongoDBExecutor(properties, data);
         executor.createCollections();
         executor.insertDataToCollections();
-
         // Generate products and insert them in the collection
-        ProductService productService = new ProductService(properties);
-        productService.saveProducts(Long.parseLong(properties.getProperty(PRODUCTS)));
-
+        executor.saveProducts(Long.parseLong(properties.getProperty(PRODUCTS)));
         // Fill leftover collection
-        LeftoverService leftoverService = new LeftoverService(properties);
-        leftoverService.saveLeftover();
+        executor.saveLeftover();
 
+        executor.createIndexes();
         // query task
-        LeftoverDTO dto = leftoverService.findAddressByCategory(properties.getProperty(CATEGORY));
-        logger.info("The address of the store with the largest number of products in the category \"{}\": {}, count = {}",
+        LeftoverDTO dto = executor.findAddressByCategory(properties.getProperty(CATEGORY));
+        logger.info(
+                "The address of the store with the largest number of products in the category \"{}\": {}, count = {}",
                 properties.getProperty(CATEGORY), dto.getAddress(), dto.getAmount());
 
         executor.close();

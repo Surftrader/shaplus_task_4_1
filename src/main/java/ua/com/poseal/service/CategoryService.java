@@ -18,9 +18,9 @@ public class CategoryService {
     private final Data data;
     private final Mapper mapper;
 
-    public CategoryService(Properties properties) {
+    public CategoryService(Properties properties, Data data) {
         this.categoryDAO = new CategoryDAO(properties);
-        this.data = new Data();
+        this.data = data;
         this.mapper = new Mapper();
     }
 

@@ -5,9 +5,6 @@ import org.bson.types.Decimal128;
 import ua.com.poseal.domain.*;
 import ua.com.poseal.dto.LeftoverDTO;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Mapper {
 
     public Document objectToDocument(Object obj) {
@@ -91,11 +88,5 @@ public class Mapper {
                 document.getLong("_id"),
                 document.getString("name")
         );
-    }
-
-    public List<Document> toDocuments(List<LeftoverDTO> dtos) {
-        return dtos.stream()
-                .map(this::objectToDocument)
-                .collect(Collectors.toList());
     }
 }

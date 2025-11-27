@@ -1,15 +1,22 @@
 package ua.com.poseal.util;
 
+import com.opencsv.CSVReader;
+import ua.com.poseal.data.Data;
+import ua.com.poseal.domain.Address;
+import ua.com.poseal.domain.Category;
+import ua.com.poseal.domain.City;
+import ua.com.poseal.domain.Store;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Properties;
+import java.util.*;
 
 import static ua.com.poseal.App.logger;
 
 public class Loader {
 
+    public static final String CATEGORIES_FILE = "categories.csv";
+    public static final String STORES_FILE = "stores.csv";
     public static final String PROPERTY_FILE = "application.properties";
     public static final String PROPERTY_FOLDER = "config";
     public static final String CATEGORY = "category";
@@ -64,5 +71,50 @@ public class Loader {
         properties.setProperty(CATEGORY, category);
         logger.info("The \"{}\" category was obtained from the properties", category);
         logger.debug("Exited downloadSystemProperties() method");
+    }
+
+    public Data loadDataFromFiles() {
+        Data data = new Data();
+        data.setCategories(loadCategories());
+        data.setStores(loadStores());
+        return data;
+    }
+
+    private Map<Integer, Store> loadStores() {
+        logger.debug("Entered loadStores() method");
+        Map<Integer, Store> map = new HashMap<>();
+        try (CSVReader reader = new CSVReader(new FileReader(
+                PROPERTY_FOLDER + File.separator + STORES_FILE))) {
+            String[] line;
+            int key = 0;
+            while ((line = reader.readNext()) != null) {
+                map.put(++key, new Store(Long.parseLong(line[0]), line[1],
+                        new Address(Long.parseLong(line[2]), line[3],
+                                new City(Long.parseLong(line[4]), line[5]))));
+            }
+        } catch (Exception ex) {
+            logger.error("Error reading file {}", STORES_FILE);
+        }
+        logger.info("{} stores were loaded from file {}", map.size(), STORES_FILE);
+        logger.debug("Exited loadStores() method");
+        return map;
+    }
+
+    private Map<Integer, Category> loadCategories() {
+        logger.debug("Entered loadCategories() method");
+        Map<Integer, Category> map = new HashMap<>();
+        try (CSVReader reader = new CSVReader(
+                new FileReader(PROPERTY_FOLDER + File.separator + CATEGORIES_FILE))) {
+            String[] line;
+            int key = 0;
+            while ((line = reader.readNext()) != null) {
+                map.put(++key, new Category(Long.parseLong(line[0]), line[1]));
+            }
+        } catch (Exception ex) {
+            logger.error("Error reading file {}", CATEGORIES_FILE);
+        }
+        logger.info("{} categories were loaded from file {}", map.size(), CATEGORIES_FILE);
+        logger.debug("Exited loadCategories() method");
+        return map;
     }
 }
